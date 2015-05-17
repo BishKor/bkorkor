@@ -1,8 +1,3 @@
-/*
-Template 2028 Personal
-http://www.tooplate.com/view/2028-personal
-*/
-
 body {
 	margin: 0;
 	padding: 0;
@@ -16,7 +11,7 @@ body {
 }
 
 a, a:link, a:visited { 
-	color: #ea6f0b; 
+	color: #6B0000; 
 	font-weight: 700; 
 	text-decoration: none; 
 	font-size: 11px; 
@@ -402,5 +397,5 @@ h6 { font-size: 14px; margin: 0 0 5px; padding: 0; }
 }
 
 #tooplate_footer a {
-	color: #fff;
+	color: #6B0000;
 }

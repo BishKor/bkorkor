@@ -1,0 +1,75 @@
+.grid .tick {
+    stroke: lightgrey;
+    opacity: 0.7;
+}
+.grid path {
+    stroke-width: 0;
+}
+
+#chart {
+    position: relative;
+    align: center;
+}
+
+#map {
+    position: relative;
+    align: center;
+}
+
+#multiplot {
+    float:right;
+}
+
+#left {margin: 10px 10px 0 0 ; float: left;}
+#right {margin: 10px 10px 0 0 ; float: left;}
+
+body {
+    position: relative;
+    align: center;
+}
+
+svg {
+    position: relative;
+    align: center;
+}
+
+canvas {
+    position: absolute;
+    align: center;
+}
+
+/*.bar {*/
+    /*fill: steelblue;*/
+/*}*/
+
+/*.bar:hover {*/
+    /*fill: brown;*/
+/*}*/
+
+.axis {
+    font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+}
+
+#mapdiv,
+#imagediv{
+    margin-left: 20px;
+    margin-top: 20px;
+    position: absolute;
+}
+
+.circle:hover {
+    fill:brown;
+}
+
+.line {
+    fill: none;
+    stroke: steelblue;
+    stroke-width: 1.5px;
+}

@@ -40,7 +40,6 @@ function pushdatatomultiplot(data, region) {
 
     var spacingbetweenlabels = 20 + numplots * 15;
 
-
     var year = document.getElementById("yearselect").value;
     var month = document.getElementById("monthselect").value;
     var day = document.getElementById("dayselect").value;

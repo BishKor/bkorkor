@@ -3,13 +3,9 @@
  */
 
 // UPDATE FUNCTION IS CALLED TO TRANSITION TO NEW STATES OF VISUALIZATIONS
-function update(minlat, maxlat, minlon, maxlon) {
+function update(filename, minlat, maxlat, minlon, maxlon) {
 
-    var year = document.getElementById("yearselect").value;
-    var month = document.getElementById("monthselect").value;
-    var day = document.getElementById("dayselect").value;
-
-    d3.text("sstdata/" + year + "-" + month + "-" + day + ".csv", function(text) {
+    d3.text("sstdata/" + filename + ".csv", function(text) {
         var data = d3.csv.parseRows(text).map(function (row) {
             return row.map(function (value) {
                 return +value;

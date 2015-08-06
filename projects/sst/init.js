@@ -79,7 +79,8 @@ function init() {
             context.putImageData(image, 0, 0, 0, 0, dx, dy);
         }
 
-        var mapsvg = d3.select("#map").append("svg")
+        var mapsvg = d3.select("#map")
+            .append("svg")
             .attr("width", mapwidth + mapmargin.left + mapmargin.right)
             .attr("height", mapheight + mapmargin.top + mapmargin.bottom)
             .append("g")
@@ -154,7 +155,7 @@ function init() {
                 currentregion.maxlat=d[3];
                 currentregion.minlon=d[4];
                 currentregion.maxlon=d[5];
-                update(d[2], d[3], d[4], d[5]);
+                updatefrombutton(d[2], d[3], d[4], d[5]);
             });
         // END MAP PREPARATION
 

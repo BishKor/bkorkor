@@ -137,12 +137,19 @@ function init() {
         //});
 
         mapsvg.selectAll("circle")
-            .data([[7 * mapwidth / 10, mapheight / 6, 0, 40, 120, 160],
+            .data([
+                [mapwidth / 2, mapheight / 6, 0, 40, 80, 120],
+                [7 * mapwidth / 10, mapheight / 6, 0, 40, 120, 160],
+                [9 * mapwidth / 10, mapheight / 6, 0, 40, 160, 200],
+                [mapwidth / 10, mapheight / 2, 40, 80, 0, 40],
+                [3 * mapwidth / 10, mapheight / 2, 40, 80, 40, 80],
                 [mapwidth / 2, mapheight / 2, 40, 80, 80, 120],
                 [7 * mapwidth / 10, mapheight / 2, 40, 80, 120, 160],
                 [9 * mapwidth / 10, mapheight / 2, 40, 80, 160, 200],
                 [mapwidth / 2, 5 * mapheight / 6, 80, 120, 80, 120],
-                [9 * mapwidth / 10, 5 * mapheight / 6, 80, 120, 160, 200]])
+                [7 * mapwidth / 10, 5 * mapheight / 6, 80, 120, 120, 160],
+                [9 * mapwidth / 10, 5 * mapheight / 6, 80, 120, 160, 200]
+            ])
             .enter()
             .append("circle")
             .attr("class", "circle")

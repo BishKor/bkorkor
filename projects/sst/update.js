@@ -3,9 +3,9 @@
  */
 
 // UPDATE FUNCTION IS CALLED TO TRANSITION TO NEW STATES OF VISUALIZATIONS
-function update(filename, minlat, maxlat, minlon, maxlon) {
+function update(date, minlat, maxlat, minlon, maxlon) {
 
-    d3.text("sstdata/" + filename + ".csv", function(text) {
+    d3.text("sstdata/" + date + ".csv", function(text) {
         var data = d3.csv.parseRows(text).map(function (row) {
             return row.map(function (value) {
                 return +value;

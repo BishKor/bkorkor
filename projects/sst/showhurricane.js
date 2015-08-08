@@ -6,6 +6,14 @@ function showhurricane() {
 
     var filename = document.getElementById("hurricaneselect").value;
 
+    var tip = d3.tip()
+        .attr('class', 'd3-tip')
+        .offset([-10, 0])
+        .html(function(d) {
+            return "<strong>Date:</strong> <span style='color:red'>" + d.date + "</span>" + "<br>" +
+                "<strong>Time:</strong> <span style='color:red'>" + d.time + "</span>";
+        });
+
     d3.csv("hurricanedata/" + filename, function (data) {
 
         data.forEach(function (d) {
@@ -27,9 +35,12 @@ function showhurricane() {
                 return (40 - d.latitude) * mapheight / 30;
             });
 
-        var paths = d3.select('body').select("#map")
-            .select('svg')
-            .append('g')
+        var svg = d3.select('body').select("#map")
+            .select('svg');
+
+        svg.call(tip);
+
+        var paths = svg.append('g')
             .attr("class", "hurricanepaths");
 
         paths.attr("transform", "translate(" + mapmargin.left + "," + mapmargin.top + ")")
@@ -37,7 +48,7 @@ function showhurricane() {
             .datum(data)
             .attr("class", "line")
             .attr("d", line)
-            .style("stroke", "white");
+            .style("stroke", "purple");
 
         var spots = d3.select('body').select("#map")
             .select('svg')
@@ -45,12 +56,20 @@ function showhurricane() {
             .attr("class", "hurricanespots");
 
         spots.attr("transform", "translate(" + mapmargin.left + "," + mapmargin.top + ")")
-            .append("path")
-            .datum(data)
-            .attr("class", "line")
-            .attr("d", line)
-            .style("stroke", "purple")
-            .style("stroke-width", '3px');
+            .selectAll("circle")
+            .data(data)
+            .enter()
+            .append("circle")
+            .attr("class", "circle")
+            .attr("cx", function(d) { return (100 - d.longitude) * mapwidth / 50; })
+            .attr("cy", function(d) { return (40 - d.latitude) * mapheight / 30; })
+            .attr("r", 10)
+            .attr("fill", "white")
+            .on("click", function(d) {
+                update(d.date, 0, 120, 0, 200);
+                })
+            .on('mouseover', tip.show)
+            .on('mouseout', tip.hide)
     });
 }
 

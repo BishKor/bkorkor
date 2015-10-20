@@ -103,3 +103,13 @@ canvas {
     top: 100%;
     left: 0;
 }
+
+.maprect {
+    fill-opacity:0.0;
+    stroke-width: 2px;
+    stroke: none;
+}
+
+.maprect:hover {
+    stroke: red;
+}

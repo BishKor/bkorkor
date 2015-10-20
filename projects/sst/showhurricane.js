@@ -14,11 +14,18 @@ function showhurricane() {
                 "<strong>Time:</strong> <span style='color:red'>" + d.time + "</span>";
         });
 
+    d3.selection.prototype.moveToFront = function() {
+        return this.each(function(){
+            this.parentNode.appendChild(this);
+        });
+    };
+
     d3.csv("hurricanedata/" + filename, function (data) {
 
         data.forEach(function (d) {
             d.longitude = +d.longitude;
             d.latitude = +d.latitude;
+            d.windspeed = +d.windspeed;
         });
 
         document.getElementById('yearselect').value=data[0].date.split('-')[0];
@@ -63,13 +70,18 @@ function showhurricane() {
             .attr("class", "circle")
             .attr("cx", function(d) { return (100 - d.longitude) * mapwidth / 50; })
             .attr("cy", function(d) { return (40 - d.latitude) * mapheight / 30; })
-            .attr("r", 10)
+            .attr("r", function(d) {return d.windspeed / 10;})
             .attr("fill", "white")
             .on("click", function(d) {
                 update(d.date, 0, 120, 0, 200);
                 })
-            .on('mouseover', tip.show)
-            .on('mouseout', tip.hide)
+            .on('mouseover',
+                function(d){
+                    tip.show(d);
+                    var sel = d3.select(this);
+                    sel.moveToFront();
+            })
+            .on('mouseout', tip.hide);
     });
 }
 

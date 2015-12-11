@@ -4,7 +4,11 @@ function toggleplay() {
         playbutton.textContent = "play";
         clearInterval(playvar);
     } else {
-        playvar = setInterval(function(){moveoneday(1, 0, 120, 0, 200);}, 500);
+        speed = 400
+        if (document.getElementById("2x").checked){
+            speed = 200
+        }
+        playvar = setInterval(function(){moveoneday(1, 0, 120, 0, 200);}, speed);
         playbutton.textContent = "pause";
     }
 }

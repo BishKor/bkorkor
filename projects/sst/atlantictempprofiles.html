@@ -93,7 +93,8 @@
     <button onclick="moveoneday(-1, 0, 120, 0, 200)"><-</button>
     <button onclick="moveoneday(1, 0, 120, 0, 200)">-></button>
     <button id="playbutton" onclick="toggleplay()">play</button>
-    <br>
+    <input type="checkbox" id="2x">2X<br>
+    <input type="checkbox" id="hurricaneio">Add and remove hurricanes with time<br>
     Hurricane:
     <select id="hurricaneselect">
         <option begin='1982-06-02' end='1982-06-06' value='AL011982 ALBERTO.csv'>AL011982 ALBERTO.csv</option>
@@ -547,8 +548,7 @@
         <option begin='2006-01-06' end='2006-01-07' value='AL312005 ZETA.csv'>AL312005 ZETA.csv</option>
     </select>
     <button onclick="showhurricane(false)">Show Hurricane</button>
-    <button onclick="clearhurricanes()">Clear Paths</button>
-    <input type="checkbox" id="hurricaneio">Add and remove hurricanes with time<br>
+    <button onclick="clearhurricanes()">Clear Paths</button> <br>
 
     <div id="map">
         <div id="imagediv"></div>

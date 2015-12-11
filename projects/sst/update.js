@@ -5,12 +5,11 @@
 // UPDATE FUNCTION IS CALLED TO TRANSITION TO NEW STATES OF VISUALIZATIONS
 function update(date, minlat, maxlat, minlon, maxlon) {
 
-    var parsedate = date.split('-');
+    document.getElementById('yearselect').value=date.split('-')[0];
+    document.getElementById('monthselect').value=date.split('-')[1];
+    document.getElementById('dayselect').value=date.split('-')[2];
 
-    document.getElementById("yearselect").value;
-    var month = document.getElementById("monthselect").value;
-    var day = document.getElementById("dayselect").value;
-
+    currentdate = date;
 
     d3.text("sstdata/" + date + ".csv", function(text) {
         var data = d3.csv.parseRows(text).map(function (row) {
@@ -70,9 +69,19 @@ function update(date, minlat, maxlat, minlon, maxlon) {
                     image.data[++p] = 255;
                 }
             }
-
             context.putImageData(image, 0, 0, 0, 0, dx, dy);
         }
-
     });
+
+    if(document.getElementById("hurricaneio").checked){
+        ops = document.getElementById('hurricaneselect').options;
+        for (op = 0; op < ops.length; op++) {
+            if (ops[op].getAttribute('begin') == currentdate) {
+                ops[op].selected = true;
+                showhurricane(true);
+            }
+        }
+    }
+
+    dispatch.update();
 }

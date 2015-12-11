@@ -5,8 +5,8 @@
 
 <div id="left">
     Month:
-    <select id="monthselect">
-        <option value=01>1</option>
+    <select id="monthselect" onChange="updateDaySelect(this.selectedIndex)">
+        <option value=01 selected>1</option>
         <option value=02>2</option>
         <option value=03>3</option>
         <option value=04>4</option>
@@ -14,12 +14,11 @@
         <option value=06>6</option>
         <option value=07>7</option>
         <option value=08>8</option>
-        <option value=09 selected>9</option>
+        <option value=09>9</option>
         <option value=10>10</option>
         <option value=11>11</option>
         <option value=12>12</option>
     </select>
-
     Day:
     <select id="dayselect">
         <option value=01>1</option>
@@ -54,11 +53,9 @@
         <option value=30>30</option>
         <option value=31>31</option>
     </select>
-
     Year:
     <select id="yearselect">
-        <option value=1981>1981</option>
-        <option value=1982>1982</option>
+        <option value=1982 selected>1982</option>
         <option value=1983>1983</option>
         <option value=1984>1984</option>
         <option value=1985>1985</option>
@@ -92,528 +89,471 @@
         <option value=2013>2013</option>
         <option value=2014>2014</option>
     </select>
-
     <button onclick="updatefrombutton(0, 120, 0, 200)">Update</button>
-
+    <button onclick="moveoneday(-1, 0, 120, 0, 200)"><-</button>
+    <button onclick="moveoneday(1, 0, 120, 0, 200)">-></button>
+    <button id="playbutton" onclick="toggleplay()">play</button>
     <br>
-
     Hurricane:
     <select id="hurricaneselect">
-        <option value='AL141981 FLOYD.csv'>FLOYD 1981</option>
-        <option value='AL151981 GERT.csv'>GERT 1981</option>
-        <option value='AL161981 HARVEY.csv'>HARVEY 1981</option>
-        <option value='AL171981 UNNAMED.csv'>UNNAMED 1981</option>
-        <option value='AL181981 IRENE.csv'>IRENE 1981</option>
-        <option value='AL191981 UNNAMED.csv'>UNNAMED 1981</option>
-        <option value='AL201981 JOSE.csv'>JOSE 1981</option>
-        <option value='AL211981 KATRINA.csv'>KATRINA 1981</option>
-        <option value='AL221981 UNNAMED.csv'>UNNAMED 1981</option>
-        <option value='AL011982 ALBERTO.csv'>ALBERTO 1982</option>
-        <option value='AL021982 UNNAMED.csv'>UNNAMED 1982</option>
-        <option value='AL031982 BERYL.csv'>BERYL 1982</option>
-        <option value='AL041982 UNNAMED.csv'>UNNAMED 1982</option>
-        <option value='AL051982 CHRIS.csv'>CHRIS 1982</option>
-        <option value='AL061982 DEBBY.csv'>DEBBY 1982</option>
-        <option value='AL071982 UNNAMED.csv'>UNNAMED 1982</option>
-        <option value='AL081982 ERNESTO.csv'>ERNESTO 1982</option>
-        <option value='AL011983 UNNAMED.csv'>UNNAMED 1983</option>
-        <option value='AL021983 UNNAMED.csv'>UNNAMED 1983</option>
-        <option value='AL031983 ALICIA.csv'>ALICIA 1983</option>
-        <option value='AL041983 BARRY.csv'>BARRY 1983</option>
-        <option value='AL051983 CHANTAL.csv'>CHANTAL 1983</option>
-        <option value='AL061983 DEAN.csv'>DEAN 1983</option>
-        <option value='AL011984 UNNAMED.csv'>UNNAMED 1984</option>
-        <option value='AL021984 UNNAMED.csv'>UNNAMED 1984</option>
-        <option value='AL031984 UNNAMED.csv'>UNNAMED 1984</option>
-        <option value='AL041984 UNNAMED.csv'>UNNAMED 1984</option>
-        <option value='AL051984 UNNAMED.csv'>UNNAMED 1984</option>
-        <option value='AL061984 ARTHUR.csv'>ARTHUR 1984</option>
-        <option value='AL071984 BERTHA.csv'>BERTHA 1984</option>
-        <option value='AL081984 CESAR.csv'>CESAR 1984</option>
-        <option value='AL091984 UNNAMED.csv'>UNNAMED 1984</option>
-        <option value='AL101984 DIANA.csv'>DIANA 1984</option>
-        <option value='AL111984 EDOUARD.csv'>EDOUARD 1984</option>
-        <option value='AL121984 FRAN.csv'>FRAN 1984</option>
-        <option value='AL131984 GUSTAV.csv'>GUSTAV 1984</option>
-        <option value='AL141984 HORTENSE.csv'>HORTENSE 1984</option>
-        <option value='AL151984 ISIDORE.csv'>ISIDORE 1984</option>
-        <option value='AL161984 JOSEPHINE.csv'>JOSEPHINE 1984</option>
-        <option value='AL171984 UNNAMED.csv'>UNNAMED 1984</option>
-        <option value='AL181984 KLAUS.csv'>KLAUS 1984</option>
-        <option value='AL191984 UNNAMED.csv'>UNNAMED 1984</option>
-        <option value='AL201984 LILI.csv'>LILI 1984</option>
-        <option value='AL011985 ANA.csv'>ANA 1985</option>
-        <option value='AL021985 BOB.csv'>BOB 1985</option>
-        <option value='AL031985 CLAUDETTE.csv'>CLAUDETTE 1985</option>
-        <option value='AL041985 DANNY.csv'>DANNY 1985</option>
-        <option value='AL051985 ELENA.csv'>ELENA 1985</option>
-        <option value='AL061985 UNNAMED.csv'>UNNAMED 1985</option>
-        <option value='AL071985 UNNAMED.csv'>UNNAMED 1985</option>
-        <option value='AL081985 FABIAN.csv'>FABIAN 1985</option>
-        <option value='AL091985 GLORIA.csv'>GLORIA 1985</option>
-        <option value='AL101985 HENRI.csv'>HENRI 1985</option>
-        <option value='AL111985 ISABEL.csv'>ISABEL 1985</option>
-        <option value='AL121985 JUAN.csv'>JUAN 1985</option>
-        <option value='AL131985 KATE.csv'>KATE 1985</option>
-        <option value='AL141985 UNNAMED.csv'>UNNAMED 1985</option>
-        <option value='AL011986 ANDREW.csv'>ANDREW 1986</option>
-        <option value='AL021986 BONNIE.csv'>BONNIE 1986</option>
-        <option value='AL031986 UNNAMED.csv'>UNNAMED 1986</option>
-        <option value='AL041986 UNNAMED.csv'>UNNAMED 1986</option>
-        <option value='AL051986 CHARLEY.csv'>CHARLEY 1986</option>
-        <option value='AL061986 UNNAMED.csv'>UNNAMED 1986</option>
-        <option value='AL071986 UNNAMED.csv'>UNNAMED 1986</option>
-        <option value='AL081986 DANIELLE.csv'>DANIELLE 1986</option>
-        <option value='AL091986 EARL.csv'>EARL 1986</option>
-        <option value='AL101986 FRANCES.csv'>FRANCES 1986</option>
-        <option value='AL011987 UNNAMED.csv'>UNNAMED 1987</option>
-        <option value='AL031987 UNNAMED.csv'>UNNAMED 1987</option>
-        <option value='AL021987 ARLENE.csv'>ARLENE 1987</option>
-        <option value='AL041987 UNNAMED.csv'>UNNAMED 1987</option>
-        <option value='AL051987 BRET.csv'>BRET 1987</option>
-        <option value='AL061987 UNNAMED.csv'>UNNAMED 1987</option>
-        <option value='AL071987 CINDY.csv'>CINDY 1987</option>
-        <option value='AL081987 UNNAMED.csv'>UNNAMED 1987</option>
-        <option value='AL091987 UNNAMED.csv'>UNNAMED 1987</option>
-        <option value='AL101987 DENNIS.csv'>DENNIS 1987</option>
-        <option value='AL111987 UNNAMED.csv'>UNNAMED 1987</option>
-        <option value='AL121987 EMILY.csv'>EMILY 1987</option>
-        <option value='AL131987 FLOYD.csv'>FLOYD 1987</option>
-        <option value='AL141987 UNNAMED.csv'>UNNAMED 1987</option>
-        <option value='AL011988 ALBERTO.csv'>ALBERTO 1988</option>
-        <option value='AL021988 BERYL.csv'>BERYL 1988</option>
-        <option value='AL031988 CHRIS.csv'>CHRIS 1988</option>
-        <option value='AL041988 DEBBY.csv'>DEBBY 1988</option>
-        <option value='AL051988 ERNESTO.csv'>ERNESTO 1988</option>
-        <option value='AL061988 UNNAMED.csv'>UNNAMED 1988</option>
-        <option value='AL071988 FLORENCE.csv'>FLORENCE 1988</option>
-        <option value='AL081988 GILBERT.csv'>GILBERT 1988</option>
-        <option value='AL091988 HELENE.csv'>HELENE 1988</option>
-        <option value='AL101988 ISAAC.csv'>ISAAC 1988</option>
-        <option value='AL111988 JOAN.csv'>JOAN 1988</option>
-        <option value='AL121988 KEITH.csv'>KEITH 1988</option>
-        <option value='AL131988 UNNAMED.csv'>UNNAMED 1988</option>
-        <option value='AL141988 UNNAMED.csv'>UNNAMED 1988</option>
-        <option value='AL151988 UNNAMED.csv'>UNNAMED 1988</option>
-        <option value='AL161988 UNNAMED.csv'>UNNAMED 1988</option>
-        <option value='AL171988 UNNAMED.csv'>UNNAMED 1988</option>
-        <option value='AL181988 UNNAMED.csv'>UNNAMED 1988</option>
-        <option value='AL191988 UNNAMED.csv'>UNNAMED 1988</option>
-        <option value='AL011989 UNNAMED.csv'>UNNAMED 1989</option>
-        <option value='AL021989 ALLISON.csv'>ALLISON 1989</option>
-        <option value='AL031989 BARRY.csv'>BARRY 1989</option>
-        <option value='AL041989 CHANTAL.csv'>CHANTAL 1989</option>
-        <option value='AL051989 DEAN.csv'>DEAN 1989</option>
-        <option value='AL061989 UNNAMED.csv'>UNNAMED 1989</option>
-        <option value='AL071989 ERIN.csv'>ERIN 1989</option>
-        <option value='AL081989 FELIX.csv'>FELIX 1989</option>
-        <option value='AL091989 UNNAMED.csv'>UNNAMED 1989</option>
-        <option value='AL101989 GABRIELLE.csv'>GABRIELLE 1989</option>
-        <option value='AL111989 HUGO.csv'>HUGO 1989</option>
-        <option value='AL121989 IRIS.csv'>IRIS 1989</option>
-        <option value='AL131989 UNNAMED.csv'>UNNAMED 1989</option>
-        <option value='AL141989 JERRY.csv'>JERRY 1989</option>
-        <option value='AL151989 KAREN.csv'>KAREN 1989</option>
-        <option value='AL011990 UNNAMED.csv'>UNNAMED 1990</option>
-        <option value='AL021990 ARTHUR.csv'>ARTHUR 1990</option>
-        <option value='AL031990 BERTHA.csv'>BERTHA 1990</option>
-        <option value='AL041990 CESAR.csv'>CESAR 1990</option>
-        <option value='AL061990 EDOUARD.csv'>EDOUARD 1990</option>
-        <option value='AL051990 DIANA.csv'>DIANA 1990</option>
-        <option value='AL071990 FRAN.csv'>FRAN 1990</option>
-        <option value='AL081990 GUSTAV.csv'>GUSTAV 1990</option>
-        <option value='AL091990 HORTENSE.csv'>HORTENSE 1990</option>
-        <option value='AL101990 ISIDORE.csv'>ISIDORE 1990</option>
-        <option value='AL111990 UNNAMED.csv'>UNNAMED 1990</option>
-        <option value='AL121990 JOSEPHINE.csv'>JOSEPHINE 1990</option>
-        <option value='AL131990 KLAUS.csv'>KLAUS 1990</option>
-        <option value='AL141990 LILI.csv'>LILI 1990</option>
-        <option value='AL151990 MARCO.csv'>MARCO 1990</option>
-        <option value='AL161990 NANA.csv'>NANA 1990</option>
-        <option value='AL011991 ANA.csv'>ANA 1991</option>
-        <option value='AL021991 UNNAMED.csv'>UNNAMED 1991</option>
-        <option value='AL031991 BOB.csv'>BOB 1991</option>
-        <option value='AL041991 UNNAMED.csv'>UNNAMED 1991</option>
-        <option value='AL051991 UNNAMED.csv'>UNNAMED 1991</option>
-        <option value='AL061991 CLAUDETTE.csv'>CLAUDETTE 1991</option>
-        <option value='AL071991 DANNY.csv'>DANNY 1991</option>
-        <option value='AL081991 ERIKA.csv'>ERIKA 1991</option>
-        <option value='AL091991 FABIAN.csv'>FABIAN 1991</option>
-        <option value='AL101991 UNNAMED.csv'>UNNAMED 1991</option>
-        <option value='AL111991 GRACE.csv'>GRACE 1991</option>
-        <option value='AL121991 UNNAMED.csv'>UNNAMED 1991</option>
-        <option value='AL011992 UNNAMED.csv'>UNNAMED 1992</option>
-        <option value='AL021992 UNNAMED.csv'>UNNAMED 1992</option>
-        <option value='AL031992 UNNAMED.csv'>UNNAMED 1992</option>
-        <option value='AL041992 ANDREW.csv'>ANDREW 1992</option>
-        <option value='AL051992 BONNIE.csv'>BONNIE 1992</option>
-        <option value='AL061992 CHARLEY.csv'>CHARLEY 1992</option>
-        <option value='AL071992 DANIELLE.csv'>DANIELLE 1992</option>
-        <option value='AL081992 UNNAMED.csv'>UNNAMED 1992</option>
-        <option value='AL091992 EARL.csv'>EARL 1992</option>
-        <option value='AL101992 FRANCES.csv'>FRANCES 1992</option>
-        <option value='AL011993 UNNAMED.csv'>UNNAMED 1993</option>
-        <option value='AL021993 ARLENE.csv'>ARLENE 1993</option>
-        <option value='AL031993 BRET.csv'>BRET 1993</option>
-        <option value='AL041993 CINDY.csv'>CINDY 1993</option>
-        <option value='AL051993 EMILY.csv'>EMILY 1993</option>
-        <option value='AL061993 DENNIS.csv'>DENNIS 1993</option>
-        <option value='AL071993 FLOYD.csv'>FLOYD 1993</option>
-        <option value='AL081993 GERT.csv'>GERT 1993</option>
-        <option value='AL091993 HARVEY.csv'>HARVEY 1993</option>
-        <option value='AL101993 UNNAMED.csv'>UNNAMED 1993</option>
-        <option value='AL011994 ALBERTO.csv'>ALBERTO 1994</option>
-        <option value='AL021994 UNNAMED.csv'>UNNAMED 1994</option>
-        <option value='AL031994 BERYL.csv'>BERYL 1994</option>
-        <option value='AL041994 CHRIS.csv'>CHRIS 1994</option>
-        <option value='AL051994 UNNAMED.csv'>UNNAMED 1994</option>
-        <option value='AL061994 DEBBY.csv'>DEBBY 1994</option>
-        <option value='AL071994 ERNESTO.csv'>ERNESTO 1994</option>
-        <option value='AL081994 UNNAMED.csv'>UNNAMED 1994</option>
-        <option value='AL091994 UNNAMED.csv'>UNNAMED 1994</option>
-        <option value='AL101994 UNNAMED.csv'>UNNAMED 1994</option>
-        <option value='AL111994 FLORENCE.csv'>FLORENCE 1994</option>
-        <option value='AL121994 GORDON.csv'>GORDON 1994</option>
-        <option value='AL011995 ALLISON.csv'>ALLISON 1995</option>
-        <option value='AL021995 BARRY.csv'>BARRY 1995</option>
-        <option value='AL031995 CHANTAL.csv'>CHANTAL 1995</option>
-        <option value='AL041995 DEAN.csv'>DEAN 1995</option>
-        <option value='AL051995 ERIN.csv'>ERIN 1995</option>
-        <option value='AL061995 UNNAMED.csv'>UNNAMED 1995</option>
-        <option value='AL071995 FELIX.csv'>FELIX 1995</option>
-        <option value='AL081995 GABRIELLE.csv'>GABRIELLE 1995</option>
-        <option value='AL091995 HUMBERTO.csv'>HUMBERTO 1995</option>
-        <option value='AL101995 IRIS.csv'>IRIS 1995</option>
-        <option value='AL111995 JERRY.csv'>JERRY 1995</option>
-        <option value='AL121995 KAREN.csv'>KAREN 1995</option>
-        <option value='AL131995 LUIS.csv'>LUIS 1995</option>
-        <option value='AL141995 UNNAMED.csv'>UNNAMED 1995</option>
-        <option value='AL151995 MARILYN.csv'>MARILYN 1995</option>
-        <option value='AL161995 NOEL.csv'>NOEL 1995</option>
-        <option value='AL171995 OPAL.csv'>OPAL 1995</option>
-        <option value='AL181995 PABLO.csv'>PABLO 1995</option>
-        <option value='AL191995 ROXANNE.csv'>ROXANNE 1995</option>
-        <option value='AL201995 SEBASTIEN.csv'>SEBASTIEN 1995</option>
-        <option value='AL211995 TANYA.csv'>TANYA 1995</option>
-        <option value='AL011996 ARTHUR.csv'>ARTHUR 1996</option>
-        <option value='AL021996 BERTHA.csv'>BERTHA 1996</option>
-        <option value='AL031996 CESAR.csv'>CESAR 1996</option>
-        <option value='AL041996 DOLLY.csv'>DOLLY 1996</option>
-        <option value='AL051996 EDOUARD.csv'>EDOUARD 1996</option>
-        <option value='AL061996 FRAN.csv'>FRAN 1996</option>
-        <option value='AL071996 GUSTAV.csv'>GUSTAV 1996</option>
-        <option value='AL081996 HORTENSE.csv'>HORTENSE 1996</option>
-        <option value='AL091996 ISIDORE.csv'>ISIDORE 1996</option>
-        <option value='AL101996 JOSEPHINE.csv'>JOSEPHINE 1996</option>
-        <option value='AL111996 KYLE.csv'>KYLE 1996</option>
-        <option value='AL121996 LILI.csv'>LILI 1996</option>
-        <option value='AL131996 MARCO.csv'>MARCO 1996</option>
-        <option value='AL011997 UNNAMED.csv'>UNNAMED 1997</option>
-        <option value='AL021997 ANA.csv'>ANA 1997</option>
-        <option value='AL031997 BILL.csv'>BILL 1997</option>
-        <option value='AL041997 CLAUDETTE.csv'>CLAUDETTE 1997</option>
-        <option value='AL051997 DANNY.csv'>DANNY 1997</option>
-        <option value='AL061997 UNNAMED.csv'>UNNAMED 1997</option>
-        <option value='AL071997 ERIKA.csv'>ERIKA 1997</option>
-        <option value='AL081997 FABIAN.csv'>FABIAN 1997</option>
-        <option value='AL091997 GRACE.csv'>GRACE 1997</option>
-        <option value='AL011998 ALEX.csv'>ALEX 1998</option>
-        <option value='AL021998 BONNIE.csv'>BONNIE 1998</option>
-        <option value='AL031998 CHARLEY.csv'>CHARLEY 1998</option>
-        <option value='AL041998 DANIELLE.csv'>DANIELLE 1998</option>
-        <option value='AL051998 EARL.csv'>EARL 1998</option>
-        <option value='AL061998 FRANCES.csv'>FRANCES 1998</option>
-        <option value='AL071998 GEORGES.csv'>GEORGES 1998</option>
-        <option value='AL081998 HERMINE.csv'>HERMINE 1998</option>
-        <option value='AL091998 IVAN.csv'>IVAN 1998</option>
-        <option value='AL101998 JEANNE.csv'>JEANNE 1998</option>
-        <option value='AL111998 KARL.csv'>KARL 1998</option>
-        <option value='AL121998 LISA.csv'>LISA 1998</option>
-        <option value='AL131998 MITCH.csv'>MITCH 1998</option>
-        <option value='AL141998 NICOLE.csv'>NICOLE 1998</option>
-        <option value='AL011999 ARLENE.csv'>ARLENE 1999</option>
-        <option value='AL021999 UNNAMED.csv'>UNNAMED 1999</option>
-        <option value='AL031999 BRET.csv'>BRET 1999</option>
-        <option value='AL041999 CINDY.csv'>CINDY 1999</option>
-        <option value='AL051999 DENNIS.csv'>DENNIS 1999</option>
-        <option value='AL061999 EMILY.csv'>EMILY 1999</option>
-        <option value='AL071999 UNNAMED.csv'>UNNAMED 1999</option>
-        <option value='AL081999 FLOYD.csv'>FLOYD 1999</option>
-        <option value='AL091999 GERT.csv'>GERT 1999</option>
-        <option value='AL101999 HARVEY.csv'>HARVEY 1999</option>
-        <option value='AL111999 UNNAMED.csv'>UNNAMED 1999</option>
-        <option value='AL121999 UNNAMED.csv'>UNNAMED 1999</option>
-        <option value='AL131999 IRENE.csv'>IRENE 1999</option>
-        <option value='AL141999 JOSE.csv'>JOSE 1999</option>
-        <option value='AL151999 KATRINA.csv'>KATRINA 1999</option>
-        <option value='AL161999 LENNY.csv'>LENNY 1999</option>
-        <option value='AL012000 UNNAMED.csv'>UNNAMED 2000</option>
-        <option value='AL022000 UNNAMED.csv'>UNNAMED 2000</option>
-        <option value='AL032000 ALBERTO.csv'>ALBERTO 2000</option>
-        <option value='AL042000 UNNAMED.csv'>UNNAMED 2000</option>
-        <option value='AL052000 BERYL.csv'>BERYL 2000</option>
-        <option value='AL062000 CHRIS.csv'>CHRIS 2000</option>
-        <option value='AL072000 DEBBY.csv'>DEBBY 2000</option>
-        <option value='AL082000 ERNESTO.csv'>ERNESTO 2000</option>
-        <option value='AL092000 UNNAMED.csv'>UNNAMED 2000</option>
-        <option value='AL102000 FLORENCE.csv'>FLORENCE 2000</option>
-        <option value='AL112000 GORDON.csv'>GORDON 2000</option>
-        <option value='AL122000 HELENE.csv'>HELENE 2000</option>
-        <option value='AL132000 ISAAC.csv'>ISAAC 2000</option>
-        <option value='AL142000 JOYCE.csv'>JOYCE 2000</option>
-        <option value='AL152000 KEITH.csv'>KEITH 2000</option>
-        <option value='AL162000 LESLIE.csv'>LESLIE 2000</option>
-        <option value='AL172000 MICHAEL.csv'>MICHAEL 2000</option>
-        <option value='AL182000 NADINE.csv'>NADINE 2000</option>
-        <option value='AL192000 UNNAMED.csv'>UNNAMED 2000</option>
-        <option value='AL012001 ALLISON.csv'>ALLISON 2001</option>
-        <option value='AL022001 UNNAMED.csv'>UNNAMED 2001</option>
-        <option value='AL032001 BARRY.csv'>BARRY 2001</option>
-        <option value='AL042001 CHANTAL.csv'>CHANTAL 2001</option>
-        <option value='AL052001 DEAN.csv'>DEAN 2001</option>
-        <option value='AL062001 ERIN.csv'>ERIN 2001</option>
-        <option value='AL072001 FELIX.csv'>FELIX 2001</option>
-        <option value='AL082001 GABRIELLE.csv'>GABRIELLE 2001</option>
-        <option value='AL092001 UNNAMED.csv'>UNNAMED 2001</option>
-        <option value='AL102001 HUMBERTO.csv'>HUMBERTO 2001</option>
-        <option value='AL112001 IRIS.csv'>IRIS 2001</option>
-        <option value='AL122001 JERRY.csv'>JERRY 2001</option>
-        <option value='AL132001 KAREN.csv'>KAREN 2001</option>
-        <option value='AL142001 LORENZO.csv'>LORENZO 2001</option>
-        <option value='AL152001 MICHELLE.csv'>MICHELLE 2001</option>
-        <option value='AL162001 NOEL.csv'>NOEL 2001</option>
-        <option value='AL172001 OLGA.csv'>OLGA 2001</option>
-        <option value='AL012002 ARTHUR.csv'>ARTHUR 2002</option>
-        <option value='AL022002 BERTHA.csv'>BERTHA 2002</option>
-        <option value='AL032002 CRISTOBAL.csv'>CRISTOBAL 2002</option>
-        <option value='AL042002 DOLLY.csv'>DOLLY 2002</option>
-        <option value='AL052002 EDOUARD.csv'>EDOUARD 2002</option>
-        <option value='AL062002 FAY.csv'>FAY 2002</option>
-        <option value='AL072002 UNNAMED.csv'>UNNAMED 2002</option>
-        <option value='AL082002 GUSTAV.csv'>GUSTAV 2002</option>
-        <option value='AL092002 HANNA.csv'>HANNA 2002</option>
-        <option value='AL102002 ISIDORE.csv'>ISIDORE 2002</option>
-        <option value='AL112002 JOSEPHINE.csv'>JOSEPHINE 2002</option>
-        <option value='AL122002 KYLE.csv'>KYLE 2002</option>
-        <option value='AL132002 LILI.csv'>LILI 2002</option>
-        <option value='AL142002 UNNAMED.csv'>UNNAMED 2002</option>
-        <option value='AL012003 ANA.csv'>ANA 2003</option>
-        <option value='AL022003 UNNAMED.csv'>UNNAMED 2003</option>
-        <option value='AL032003 BILL.csv'>BILL 2003</option>
-        <option value='AL042003 CLAUDETTE.csv'>CLAUDETTE 2003</option>
-        <option value='AL052003 DANNY.csv'>DANNY 2003</option>
-        <option value='AL062003 UNNAMED.csv'>UNNAMED 2003</option>
-        <option value='AL072003 UNNAMED.csv'>UNNAMED 2003</option>
-        <option value='AL082003 ERIKA.csv'>ERIKA 2003</option>
-        <option value='AL092003 UNNAMED.csv'>UNNAMED 2003</option>
-        <option value='AL102003 FABIAN.csv'>FABIAN 2003</option>
-        <option value='AL112003 GRACE.csv'>GRACE 2003</option>
-        <option value='AL122003 HENRI.csv'>HENRI 2003</option>
-        <option value='AL132003 ISABEL.csv'>ISABEL 2003</option>
-        <option value='AL142003 UNNAMED.csv'>UNNAMED 2003</option>
-        <option value='AL152003 JUAN.csv'>JUAN 2003</option>
-        <option value='AL162003 KATE.csv'>KATE 2003</option>
-        <option value='AL172003 LARRY.csv'>LARRY 2003</option>
-        <option value='AL182003 MINDY.csv'>MINDY 2003</option>
-        <option value='AL192003 NICHOLAS.csv'>NICHOLAS 2003</option>
-        <option value='AL202003 ODETTE.csv'>ODETTE 2003</option>
-        <option value='AL212003 PETER.csv'>PETER 2003</option>
-        <option value='AL012004 ALEX.csv'>ALEX 2004</option>
-        <option value='AL022004 BONNIE.csv'>BONNIE 2004</option>
-        <option value='AL032004 CHARLEY.csv'>CHARLEY 2004</option>
-        <option value='AL042004 DANIELLE.csv'>DANIELLE 2004</option>
-        <option value='AL052004 EARL.csv'>EARL 2004</option>
-        <option value='AL062004 FRANCES.csv'>FRANCES 2004</option>
-        <option value='AL072004 GASTON.csv'>GASTON 2004</option>
-        <option value='AL082004 HERMINE.csv'>HERMINE 2004</option>
-        <option value='AL092004 IVAN.csv'>IVAN 2004</option>
-        <option value='AL102004 UNNAMED.csv'>UNNAMED 2004</option>
-        <option value='AL112004 JEANNE.csv'>JEANNE 2004</option>
-        <option value='AL122004 KARL.csv'>KARL 2004</option>
-        <option value='AL132004 LISA.csv'>LISA 2004</option>
-        <option value='AL142004 MATTHEW.csv'>MATTHEW 2004</option>
-        <option value='AL152004 NICOLE.csv'>NICOLE 2004</option>
-        <option value='AL162004 OTTO.csv'>OTTO 2004</option>
-        <option value='AL012005 ARLENE.csv'>ARLENE 2005</option>
-        <option value='AL022005 BRET.csv'>BRET 2005</option>
-        <option value='AL032005 CINDY.csv'>CINDY 2005</option>
-        <option value='AL042005 DENNIS.csv'>DENNIS 2005</option>
-        <option value='AL052005 EMILY.csv'>EMILY 2005</option>
-        <option value='AL062005 FRANKLIN.csv'>FRANKLIN 2005</option>
-        <option value='AL072005 GERT.csv'>GERT 2005</option>
-        <option value='AL082005 HARVEY.csv'>HARVEY 2005</option>
-        <option value='AL092005 IRENE.csv'>IRENE 2005</option>
-        <option value='AL102005 TEN.csv'>TEN 2005</option>
-        <option value='AL112005 JOSE.csv'>JOSE 2005</option>
-        <option value='AL122005 KATRINA.csv'>KATRINA 2005</option>
-        <option value='AL132005 LEE.csv'>LEE 2005</option>
-        <option value='AL142005 MARIA.csv'>MARIA 2005</option>
-        <option value='AL152005 NATE.csv'>NATE 2005</option>
-        <option value='AL162005 OPHELIA.csv'>OPHELIA 2005</option>
-        <option value='AL172005 PHILIPPE.csv'>PHILIPPE 2005</option>
-        <option value='AL182005 RITA.csv'>RITA 2005</option>
-        <option value='AL192005 NINETEEN.csv'>NINETEEN 2005</option>
-        <option value='AL202005 STAN.csv'>STAN 2005</option>
-        <option value='AL212005 UNNAMED.csv'>UNNAMED 2005</option>
-        <option value='AL222005 TAMMY.csv'>TAMMY 2005</option>
-        <option value='AL232005 TWENTY-TWO.csv'>TWENTY-TWO 2005</option>
-        <option value='AL242005 VINCE.csv'>VINCE 2005</option>
-        <option value='AL252005 WILMA.csv'>WILMA 2005</option>
-        <option value='AL262005 ALPHA.csv'>ALPHA 2005</option>
-        <option value='AL272005 BETA.csv'>BETA 2005</option>
-        <option value='AL282005 GAMMA.csv'>GAMMA 2005</option>
-        <option value='AL292005 DELTA.csv'>DELTA 2005</option>
-        <option value='AL302005 EPSILON.csv'>EPSILON 2005</option>
-        <option value='AL312005 ZETA.csv'>ZETA 2005</option>
-        <option value='AL012006 ALBERTO.csv'>ALBERTO 2006</option>
-        <option value='AL022006 UNNAMED.csv'>UNNAMED 2006</option>
-        <option value='AL032006 BERYL.csv'>BERYL 2006</option>
-        <option value='AL042006 CHRIS.csv'>CHRIS 2006</option>
-        <option value='AL052006 DEBBY.csv'>DEBBY 2006</option>
-        <option value='AL062006 ERNESTO.csv'>ERNESTO 2006</option>
-        <option value='AL072006 FLORENCE.csv'>FLORENCE 2006</option>
-        <option value='AL082006 GORDON.csv'>GORDON 2006</option>
-        <option value='AL092006 HELENE.csv'>HELENE 2006</option>
-        <option value='AL102006 ISAAC.csv'>ISAAC 2006</option>
-        <option value='AL012007 ANDREA.csv'>ANDREA 2007</option>
-        <option value='AL022007 BARRY.csv'>BARRY 2007</option>
-        <option value='AL032007 CHANTAL.csv'>CHANTAL 2007</option>
-        <option value='AL042007 DEAN.csv'>DEAN 2007</option>
-        <option value='AL052007 ERIN.csv'>ERIN 2007</option>
-        <option value='AL062007 FELIX.csv'>FELIX 2007</option>
-        <option value='AL072007 GABRIELLE.csv'>GABRIELLE 2007</option>
-        <option value='AL082007 INGRID.csv'>INGRID 2007</option>
-        <option value='AL092007 HUMBERTO.csv'>HUMBERTO 2007</option>
-        <option value='AL102007 TEN.csv'>TEN 2007</option>
-        <option value='AL112007 JERRY.csv'>JERRY 2007</option>
-        <option value='AL122007 KAREN.csv'>KAREN 2007</option>
-        <option value='AL132007 LORENZO.csv'>LORENZO 2007</option>
-        <option value='AL142007 MELISSA.csv'>MELISSA 2007</option>
-        <option value='AL152007 FIFTEEN.csv'>FIFTEEN 2007</option>
-        <option value='AL162007 NOEL.csv'>NOEL 2007</option>
-        <option value='AL172007 OLGA.csv'>OLGA 2007</option>
-        <option value='AL012008 ARTHUR.csv'>ARTHUR 2008</option>
-        <option value='AL022008 BERTHA.csv'>BERTHA 2008</option>
-        <option value='AL032008 CRISTOBAL.csv'>CRISTOBAL 2008</option>
-        <option value='AL042008 DOLLY.csv'>DOLLY 2008</option>
-        <option value='AL052008 EDOUARD.csv'>EDOUARD 2008</option>
-        <option value='AL062008 FAY.csv'>FAY 2008</option>
-        <option value='AL072008 GUSTAV.csv'>GUSTAV 2008</option>
-        <option value='AL082008 HANNA.csv'>HANNA 2008</option>
-        <option value='AL092008 IKE.csv'>IKE 2008</option>
-        <option value='AL102008 JOSEPHINE.csv'>JOSEPHINE 2008</option>
-        <option value='AL112008 KYLE.csv'>KYLE 2008</option>
-        <option value='AL122008 LAURA.csv'>LAURA 2008</option>
-        <option value='AL132008 MARCO.csv'>MARCO 2008</option>
-        <option value='AL142008 NANA.csv'>NANA 2008</option>
-        <option value='AL152008 OMAR.csv'>OMAR 2008</option>
-        <option value='AL162008 SIXTEEN.csv'>SIXTEEN 2008</option>
-        <option value='AL172008 PALOMA.csv'>PALOMA 2008</option>
-        <option value='AL012009 ONE.csv'>ONE 2009</option>
-        <option value='AL022009 ANA.csv'>ANA 2009</option>
-        <option value='AL032009 BILL.csv'>BILL 2009</option>
-        <option value='AL042009 CLAUDETTE.csv'>CLAUDETTE 2009</option>
-        <option value='AL052009 DANNY.csv'>DANNY 2009</option>
-        <option value='AL062009 ERIKA.csv'>ERIKA 2009</option>
-        <option value='AL072009 FRED.csv'>FRED 2009</option>
-        <option value='AL082009 EIGHT.csv'>EIGHT 2009</option>
-        <option value='AL092009 GRACE.csv'>GRACE 2009</option>
-        <option value='AL102009 HENRI.csv'>HENRI 2009</option>
-        <option value='AL112009 IDA.csv'>IDA 2009</option>
-        <option value='AL012010 ALEX.csv'>ALEX 2010</option>
-        <option value='AL022010 TWO.csv'>TWO 2010</option>
-        <option value='AL032010 BONNIE.csv'>BONNIE 2010</option>
-        <option value='AL042010 COLIN.csv'>COLIN 2010</option>
-        <option value='AL052010 FIVE.csv'>FIVE 2010</option>
-        <option value='AL062010 DANIELLE.csv'>DANIELLE 2010</option>
-        <option value='AL072010 EARL.csv'>EARL 2010</option>
-        <option value='AL082010 FIONA.csv'>FIONA 2010</option>
-        <option value='AL092010 GASTON.csv'>GASTON 2010</option>
-        <option value='AL102010 HERMINE.csv'>HERMINE 2010</option>
-        <option value='AL112010 IGOR.csv'>IGOR 2010</option>
-        <option value='AL122010 JULIA.csv'>JULIA 2010</option>
-        <option value='AL132010 KARL.csv'>KARL 2010</option>
-        <option value='AL142010 LISA.csv'>LISA 2010</option>
-        <option value='AL152010 MATTHEW.csv'>MATTHEW 2010</option>
-        <option value='AL162010 NICOLE.csv'>NICOLE 2010</option>
-        <option value='AL172010 OTTO.csv'>OTTO 2010</option>
-        <option value='AL182010 PAULA.csv'>PAULA 2010</option>
-        <option value='AL192010 RICHARD.csv'>RICHARD 2010</option>
-        <option value='AL202010 SHARY.csv'>SHARY 2010</option>
-        <option value='AL212010 TOMAS.csv'>TOMAS 2010</option>
-        <option value='AL012011 ARLENE.csv'>ARLENE 2011</option>
-        <option value='AL022011 BRET.csv'>BRET 2011</option>
-        <option value='AL032011 CINDY.csv'>CINDY 2011</option>
-        <option value='AL042011 DON.csv'>DON 2011</option>
-        <option value='AL052011 EMILY.csv'>EMILY 2011</option>
-        <option value='AL062011 FRANKLIN.csv'>FRANKLIN 2011</option>
-        <option value='AL072011 GERT.csv'>GERT 2011</option>
-        <option value='AL082011 HARVEY.csv'>HARVEY 2011</option>
-        <option value='AL092011 IRENE.csv'>IRENE 2011</option>
-        <option value='AL102011 TEN.csv'>TEN 2011</option>
-        <option value='AL112011 JOSE.csv'>JOSE 2011</option>
-        <option value='AL122011 KATIA.csv'>KATIA 2011</option>
-        <option value='AL202011 UNNAMED.csv'>UNNAMED 2011</option>
-        <option value='AL132011 LEE.csv'>LEE 2011</option>
-        <option value='AL142011 MARIA.csv'>MARIA 2011</option>
-        <option value='AL152011 NATE.csv'>NATE 2011</option>
-        <option value='AL162011 OPHELIA.csv'>OPHELIA 2011</option>
-        <option value='AL172011 PHILIPPE.csv'>PHILIPPE 2011</option>
-        <option value='AL182011 RINA.csv'>RINA 2011</option>
-        <option value='AL192011 SEAN.csv'>SEAN 2011</option>
-        <option value='AL012012 ALBERTO.csv'>ALBERTO 2012</option>
-        <option value='AL022012 BERYL.csv'>BERYL 2012</option>
-        <option value='AL032012 CHRIS.csv'>CHRIS 2012</option>
-        <option value='AL042012 DEBBY.csv'>DEBBY 2012</option>
-        <option value='AL052012 ERNESTO.csv'>ERNESTO 2012</option>
-        <option value='AL062012 FLORENCE.csv'>FLORENCE 2012</option>
-        <option value='AL072012 HELENE.csv'>HELENE 2012</option>
-        <option value='AL082012 GORDON.csv'>GORDON 2012</option>
-        <option value='AL092012 ISAAC.csv'>ISAAC 2012</option>
-        <option value='AL102012 JOYCE.csv'>JOYCE 2012</option>
-        <option value='AL112012 KIRK.csv'>KIRK 2012</option>
-        <option value='AL122012 LESLIE.csv'>LESLIE 2012</option>
-        <option value='AL132012 MICHAEL.csv'>MICHAEL 2012</option>
-        <option value='AL142012 NADINE.csv'>NADINE 2012</option>
-        <option value='AL152012 OSCAR.csv'>OSCAR 2012</option>
-        <option value='AL162012 PATTY.csv'>PATTY 2012</option>
-        <option value='AL172012 RAFAEL.csv'>RAFAEL 2012</option>
-        <option value='AL182012 SANDY.csv'>SANDY 2012</option>
-        <option value='AL192012 TONY.csv'>TONY 2012</option>
-        <option value='AL012013 ANDREA.csv'>ANDREA 2013</option>
-        <option value='AL022013 BARRY.csv'>BARRY 2013</option>
-        <option value='AL032013 CHANTAL.csv'>CHANTAL 2013</option>
-        <option value='AL042013 DORIAN.csv'>DORIAN 2013</option>
-        <option value='AL052013 ERIN.csv'>ERIN 2013</option>
-        <option value='AL062013 FERNAND.csv'>FERNAND 2013</option>
-        <option value='AL072013 GABRIELLE.csv'>GABRIELLE 2013</option>
-        <option value='AL082013 EIGHT.csv'>EIGHT 2013</option>
-        <option value='AL092013 HUMBERTO.csv'>HUMBERTO 2013</option>
-        <option value='AL102013 INGRID.csv'>INGRID 2013</option>
-        <option value='AL112013 JERRY.csv'>JERRY 2013</option>
-        <option value='AL122013 KAREN.csv'>KAREN 2013</option>
-        <option value='AL132013 LORENZO.csv'>LORENZO 2013</option>
-        <option value='AL142013 MELISSA.csv'>MELISSA 2013</option>
-        <option value='AL152013 UNNAMED.csv'>UNNAMED 2013</option>
-        <option value='AL012014 ARTHUR.csv'>ARTHUR 2014</option>
-        <option value='AL022014 TWO.csv'>TWO 2014</option>
-        <option value='AL032014 BERTHA.csv'>BERTHA 2014</option>
-        <option value='AL042014 CRISTOBAL.csv'>CRISTOBAL 2014</option>
-        <option value='AL052014 DOLLY.csv'>DOLLY 2014</option>
-        <option value='AL062014 EDOUARD.csv'>EDOUARD 2014</option>
-        <option value='AL072014 FAY.csv'>FAY 2014</option>
-        <option value='AL082014 GONZALO.csv'>GONZALO 2014</option>
-        <option value='AL092014 HANNA.csv'>HANNA 2014</option>
+        <option begin='1982-06-02' end='1982-06-06' value='AL011982 ALBERTO.csv'>AL011982 ALBERTO.csv</option>
+        <option begin='1983-07-25' end='1983-07-28' value='AL011983 UNNAMED.csv'>AL011983 UNNAMED.csv</option>
+        <option begin='1984-06-11' end='1984-06-14' value='AL011984 UNNAMED.csv'>AL011984 UNNAMED.csv</option>
+        <option begin='1985-07-15' end='1985-07-18' value='AL011985 ANA.csv'>AL011985 ANA.csv</option>
+        <option begin='1986-06-05' end='1986-06-08' value='AL011986 ANDREW.csv'>AL011986 ANDREW.csv</option>
+        <option begin='1987-05-24' end='1987-06-01' value='AL011987 UNNAMED.csv'>AL011987 UNNAMED.csv</option>
+        <option begin='1988-08-05' end='1988-08-07' value='AL011988 ALBERTO.csv'>AL011988 ALBERTO.csv</option>
+        <option begin='1989-06-15' end='1989-06-17' value='AL011989 UNNAMED.csv'>AL011989 UNNAMED.csv</option>
+        <option begin='1990-05-24' end='1990-05-26' value='AL011990 UNNAMED.csv'>AL011990 UNNAMED.csv</option>
+        <option begin='1991-06-29' end='1991-07-05' value='AL011991 ANA.csv'>AL011991 ANA.csv</option>
+        <option begin='1992-04-21' end='1992-04-24' value='AL011992 UNNAMED.csv'>AL011992 UNNAMED.csv</option>
+        <option begin='1993-05-31' end='1993-06-03' value='AL011993 UNNAMED.csv'>AL011993 UNNAMED.csv</option>
+        <option begin='1994-06-30' end='1994-07-07' value='AL011994 ALBERTO.csv'>AL011994 ALBERTO.csv</option>
+        <option begin='1995-06-03' end='1995-06-07' value='AL011995 ALLISON.csv'>AL011995 ALLISON.csv</option>
+        <option begin='1996-06-17' end='1996-06-22' value='AL011996 ARTHUR.csv'>AL011996 ARTHUR.csv</option>
+        <option begin='1997-05-31' end='1997-06-02' value='AL011997 UNNAMED.csv'>AL011997 UNNAMED.csv</option>
+        <option begin='1998-07-31' end='1998-08-02' value='AL011998 ALEX.csv'>AL011998 ALEX.csv</option>
+        <option begin='1999-06-11' end='1999-06-18' value='AL011999 ARLENE.csv'>AL011999 ARLENE.csv</option>
+        <option begin='2000-06-07' end='2000-06-08' value='AL012000 UNNAMED.csv'>AL012000 UNNAMED.csv</option>
+        <option begin='2001-06-05' end='2001-06-17' value='AL012001 ALLISON.csv'>AL012001 ALLISON.csv</option>
+        <option begin='2002-07-14' end='2002-07-16' value='AL012002 ARTHUR.csv'>AL012002 ARTHUR.csv</option>
+        <option begin='2003-04-18' end='2003-04-23' value='AL012003 ANA.csv'>AL012003 ANA.csv</option>
+        <option begin='2004-07-31' end='2004-08-05' value='AL012004 ALEX.csv'>AL012004 ALEX.csv</option>
+        <option begin='2005-06-08' end='2005-06-13' value='AL012005 ARLENE.csv'>AL012005 ARLENE.csv</option>
+        <option begin='2006-06-10' end='2006-06-15' value='AL012006 ALBERTO.csv'>AL012006 ALBERTO.csv</option>
+        <option begin='2007-05-06' end='2007-05-14' value='AL012007 ANDREA.csv'>AL012007 ANDREA.csv</option>
+        <option begin='2008-05-31' end='2008-06-02' value='AL012008 ARTHUR.csv'>AL012008 ARTHUR.csv</option>
+        <option begin='2009-05-26' end='2009-05-29' value='AL012009 ONE.csv'>AL012009 ONE.csv</option>
+        <option begin='2010-06-24' end='2010-07-01' value='AL012010 ALEX.csv'>AL012010 ALEX.csv</option>
+        <option begin='2011-06-28' end='2011-07-01' value='AL012011 ARLENE.csv'>AL012011 ARLENE.csv</option>
+        <option begin='2012-05-19' end='2012-05-23' value='AL012012 ALBERTO.csv'>AL012012 ALBERTO.csv</option>
+        <option begin='2013-06-05' end='2013-06-08' value='AL012013 ANDREA.csv'>AL012013 ANDREA.csv</option>
+        <option begin='2014-06-28' end='2014-07-04' value='AL012014 ARTHUR.csv'>AL012014 ARTHUR.csv</option>
+        <option begin='1982-06-18' end='1982-06-20' value='AL021982 UNNAMED.csv'>AL021982 UNNAMED.csv</option>
+        <option begin='1983-07-31' end='1983-08-02' value='AL021983 UNNAMED.csv'>AL021983 UNNAMED.csv</option>
+        <option begin='1984-06-18' end='1984-06-20' value='AL021984 UNNAMED.csv'>AL021984 UNNAMED.csv</option>
+        <option begin='1985-07-21' end='1985-07-26' value='AL021985 BOB.csv'>AL021985 BOB.csv</option>
+        <option begin='1986-06-23' end='1986-06-28' value='AL021986 BONNIE.csv'>AL021986 BONNIE.csv</option>
+        <option begin='1987-08-08' end='1987-08-19' value='AL021987 ARLENE.csv'>AL021987 ARLENE.csv</option>
+        <option begin='1988-08-08' end='1988-08-10' value='AL021988 BERYL.csv'>AL021988 BERYL.csv</option>
+        <option begin='1989-06-24' end='1989-07-01' value='AL021989 ALLISON.csv'>AL021989 ALLISON.csv</option>
+        <option begin='1990-07-24' end='1990-07-27' value='AL021990 ARTHUR.csv'>AL021990 ARTHUR.csv</option>
+        <option begin='1991-07-05' end='1991-07-07' value='AL021991 UNNAMED.csv'>AL021991 UNNAMED.csv</option>
+        <option begin='1992-06-25' end='1992-06-26' value='AL021992 UNNAMED.csv'>AL021992 UNNAMED.csv</option>
+        <option begin='1993-06-18' end='1993-06-21' value='AL021993 ARLENE.csv'>AL021993 ARLENE.csv</option>
+        <option begin='1994-07-20' end='1994-07-21' value='AL021994 UNNAMED.csv'>AL021994 UNNAMED.csv</option>
+        <option begin='1995-07-05' end='1995-07-09' value='AL021995 BARRY.csv'>AL021995 BARRY.csv</option>
+        <option begin='1996-07-06' end='1996-07-13' value='AL021996 BERTHA.csv'>AL021996 BERTHA.csv</option>
+        <option begin='1997-06-30' end='1997-07-04' value='AL021997 ANA.csv'>AL021997 ANA.csv</option>
+        <option begin='1998-08-19' end='1998-08-29' value='AL021998 BONNIE.csv'>AL021998 BONNIE.csv</option>
+        <option begin='1999-07-02' end='1999-07-03' value='AL021999 UNNAMED.csv'>AL021999 UNNAMED.csv</option>
+        <option begin='2002-08-04' end='2002-08-09' value='AL022002 BERTHA.csv'>AL022002 BERTHA.csv</option>
+        <option begin='2004-08-03' end='2004-08-14' value='AL022004 BONNIE.csv'>AL022004 BONNIE.csv</option>
+        <option begin='2005-06-28' end='2005-06-30' value='AL022005 BRET.csv'>AL022005 BRET.csv</option>
+        <option begin='2006-07-16' end='2006-07-17' value='AL022006 UNNAMED.csv'>AL022006 UNNAMED.csv</option>
+        <option begin='2007-05-31' end='2007-06-04' value='AL022007 BARRY.csv'>AL022007 BARRY.csv</option>
+        <option begin='2008-07-07' end='2008-07-18' value='AL022008 BERTHA.csv'>AL022008 BERTHA.csv</option>
+        <option begin='2009-08-16' end='2009-08-16' value='AL022009 ANA.csv'>AL022009 ANA.csv</option>
+        <option begin='2010-07-07' end='2010-07-09' value='AL022010 TWO.csv'>AL022010 TWO.csv</option>
+        <option begin='2011-07-16' end='2011-07-23' value='AL022011 BRET.csv'>AL022011 BRET.csv</option>
+        <option begin='2012-05-25' end='2012-06-02' value='AL022012 BERYL.csv'>AL022012 BERYL.csv</option>
+        <option begin='2013-06-16' end='2013-06-21' value='AL022013 BARRY.csv'>AL022013 BARRY.csv</option>
+        <option begin='2014-07-23' end='2014-07-23' value='AL022014 TWO.csv'>AL022014 TWO.csv</option>
+        <option begin='1982-09-03' end='1982-09-06' value='AL031982 BERYL.csv'>AL031982 BERYL.csv</option>
+        <option begin='1983-08-15' end='1983-08-21' value='AL031983 ALICIA.csv'>AL031983 ALICIA.csv</option>
+        <option begin='1984-07-24' end='1984-07-26' value='AL031984 UNNAMED.csv'>AL031984 UNNAMED.csv</option>
+        <option begin='1985-08-09' end='1985-08-14' value='AL031985 CLAUDETTE.csv'>AL031985 CLAUDETTE.csv</option>
+        <option begin='1986-07-23' end='1986-07-28' value='AL031986 UNNAMED.csv'>AL031986 UNNAMED.csv</option>
+        <option begin='1987-08-09' end='1987-08-17' value='AL031987 UNNAMED.csv'>AL031987 UNNAMED.csv</option>
+        <option begin='1988-08-22' end='1988-08-29' value='AL031988 CHRIS.csv'>AL031988 CHRIS.csv</option>
+        <option begin='1989-07-11' end='1989-07-14' value='AL031989 BARRY.csv'>AL031989 BARRY.csv</option>
+        <option begin='1990-07-24' end='1990-08-01' value='AL031990 BERTHA.csv'>AL031990 BERTHA.csv</option>
+        <option begin='1991-08-16' end='1991-08-19' value='AL031991 BOB.csv'>AL031991 BOB.csv</option>
+        <option begin='1992-07-24' end='1992-07-26' value='AL031992 UNNAMED.csv'>AL031992 UNNAMED.csv</option>
+        <option begin='1993-08-06' end='1993-08-11' value='AL031993 BRET.csv'>AL031993 BRET.csv</option>
+        <option begin='1994-08-14' end='1994-08-18' value='AL031994 BERYL.csv'>AL031994 BERYL.csv</option>
+        <option begin='1995-07-12' end='1995-07-20' value='AL031995 CHANTAL.csv'>AL031995 CHANTAL.csv</option>
+        <option begin='1996-07-24' end='1996-07-28' value='AL031996 CESAR.csv'>AL031996 CESAR.csv</option>
+        <option begin='1997-07-11' end='1997-07-12' value='AL031997 BILL.csv'>AL031997 BILL.csv</option>
+        <option begin='1998-08-21' end='1998-08-23' value='AL031998 CHARLEY.csv'>AL031998 CHARLEY.csv</option>
+        <option begin='1999-08-18' end='1999-08-24' value='AL031999 BRET.csv'>AL031999 BRET.csv</option>
+        <option begin='2000-08-09' end='2000-08-13' value='AL032000 ALBERTO.csv'>AL032000 ALBERTO.csv</option>
+        <option begin='2001-08-02' end='2001-08-08' value='AL032001 BARRY.csv'>AL032001 BARRY.csv</option>
+        <option begin='2002-08-05' end='2002-08-08' value='AL032002 CRISTOBAL.csv'>AL032002 CRISTOBAL.csv</option>
+        <option begin='2003-06-28' end='2003-07-03' value='AL032003 BILL.csv'>AL032003 BILL.csv</option>
+        <option begin='2004-08-09' end='2004-08-15' value='AL032004 CHARLEY.csv'>AL032004 CHARLEY.csv</option>
+        <option begin='2005-07-03' end='2005-07-09' value='AL032005 CINDY.csv'>AL032005 CINDY.csv</option>
+        <option begin='2006-07-18' end='2006-07-21' value='AL032006 BERYL.csv'>AL032006 BERYL.csv</option>
+        <option begin='2007-07-31' end='2007-07-31' value='AL032007 CHANTAL.csv'>AL032007 CHANTAL.csv</option>
+        <option begin='2008-07-19' end='2008-07-22' value='AL032008 CRISTOBAL.csv'>AL032008 CRISTOBAL.csv</option>
+        <option begin='2009-08-18' end='2009-08-23' value='AL032009 BILL.csv'>AL032009 BILL.csv</option>
+        <option begin='2010-07-22' end='2010-07-25' value='AL032010 BONNIE.csv'>AL032010 BONNIE.csv</option>
+        <option begin='2011-07-20' end='2011-07-21' value='AL032011 CINDY.csv'>AL032011 CINDY.csv</option>
+        <option begin='2012-06-17' end='2012-06-20' value='AL032012 CHRIS.csv'>AL032012 CHRIS.csv</option>
+        <option begin='2013-07-08' end='2013-07-10' value='AL032013 CHANTAL.csv'>AL032013 CHANTAL.csv</option>
+        <option begin='2014-07-31' end='2014-08-06' value='AL032014 BERTHA.csv'>AL032014 BERTHA.csv</option>
+        <option begin='1982-09-06' end='1982-09-09' value='AL041982 UNNAMED.csv'>AL041982 UNNAMED.csv</option>
+        <option begin='1983-08-23' end='1983-08-29' value='AL041983 BARRY.csv'>AL041983 BARRY.csv</option>
+        <option begin='1984-08-06' end='1984-08-08' value='AL041984 UNNAMED.csv'>AL041984 UNNAMED.csv</option>
+        <option begin='1985-08-12' end='1985-08-20' value='AL041985 DANNY.csv'>AL041985 DANNY.csv</option>
+        <option begin='1986-08-04' end='1986-08-05' value='AL041986 UNNAMED.csv'>AL041986 UNNAMED.csv</option>
+        <option begin='1987-08-13' end='1987-08-15' value='AL041987 UNNAMED.csv'>AL041987 UNNAMED.csv</option>
+        <option begin='1988-08-31' end='1988-09-03' value='AL041988 DEBBY.csv'>AL041988 DEBBY.csv</option>
+        <option begin='1989-07-30' end='1989-08-03' value='AL041989 CHANTAL.csv'>AL041989 CHANTAL.csv</option>
+        <option begin='1992-08-18' end='1992-08-28' value='AL041992 ANDREW.csv'>AL041992 ANDREW.csv</option>
+        <option begin='1993-08-14' end='1993-08-17' value='AL041993 CINDY.csv'>AL041993 CINDY.csv</option>
+        <option begin='1994-08-19' end='1994-08-23' value='AL041994 CHRIS.csv'>AL041994 CHRIS.csv</option>
+        <option begin='1995-07-28' end='1995-08-02' value='AL041995 DEAN.csv'>AL041995 DEAN.csv</option>
+        <option begin='1996-08-19' end='1996-08-23' value='AL041996 DOLLY.csv'>AL041996 DOLLY.csv</option>
+        <option begin='1997-07-13' end='1997-07-16' value='AL041997 CLAUDETTE.csv'>AL041997 CLAUDETTE.csv</option>
+        <option begin='1998-08-26' end='1998-09-03' value='AL041998 DANIELLE.csv'>AL041998 DANIELLE.csv</option>
+        <option begin='1999-08-26' end='1999-08-31' value='AL041999 CINDY.csv'>AL041999 CINDY.csv</option>
+        <option begin='2000-08-08' end='2000-08-11' value='AL042000 UNNAMED.csv'>AL042000 UNNAMED.csv</option>
+        <option begin='2001-08-16' end='2001-08-22' value='AL042001 CHANTAL.csv'>AL042001 CHANTAL.csv</option>
+        <option begin='2002-09-01' end='2002-09-04' value='AL042002 DOLLY.csv'>AL042002 DOLLY.csv</option>
+        <option begin='2003-07-07' end='2003-07-16' value='AL042003 CLAUDETTE.csv'>AL042003 CLAUDETTE.csv</option>
+        <option begin='2005-07-04' end='2005-07-16' value='AL042005 DENNIS.csv'>AL042005 DENNIS.csv</option>
+        <option begin='2006-08-01' end='2006-08-06' value='AL042006 CHRIS.csv'>AL042006 CHRIS.csv</option>
+        <option begin='2007-08-16' end='2007-08-23' value='AL042007 DEAN.csv'>AL042007 DEAN.csv</option>
+        <option begin='2008-07-20' end='2008-07-24' value='AL042008 DOLLY.csv'>AL042008 DOLLY.csv</option>
+        <option begin='2009-08-16' end='2009-08-17' value='AL042009 CLAUDETTE.csv'>AL042009 CLAUDETTE.csv</option>
+        <option begin='2010-08-03' end='2010-08-08' value='AL042010 COLIN.csv'>AL042010 COLIN.csv</option>
+        <option begin='2011-07-27' end='2011-07-30' value='AL042011 DON.csv'>AL042011 DON.csv</option>
+        <option begin='2012-06-23' end='2012-06-27' value='AL042012 DEBBY.csv'>AL042012 DEBBY.csv</option>
+        <option begin='2013-07-27' end='2013-08-04' value='AL042013 DORIAN.csv'>AL042013 DORIAN.csv</option>
+        <option begin='2014-08-23' end='2014-08-29' value='AL042014 CRISTOBAL.csv'>AL042014 CRISTOBAL.csv</option>
+        <option begin='1982-09-09' end='1982-09-12' value='AL051982 CHRIS.csv'>AL051982 CHRIS.csv</option>
+        <option begin='1983-09-10' end='1983-09-14' value='AL051983 CHANTAL.csv'>AL051983 CHANTAL.csv</option>
+        <option begin='1984-08-18' end='1984-08-19' value='AL051984 UNNAMED.csv'>AL051984 UNNAMED.csv</option>
+        <option begin='1985-08-28' end='1985-09-04' value='AL051985 ELENA.csv'>AL051985 ELENA.csv</option>
+        <option begin='1986-08-13' end='1986-08-19' value='AL051986 CHARLEY.csv'>AL051986 CHARLEY.csv</option>
+        <option begin='1987-08-23' end='1987-08-24' value='AL051987 BRET.csv'>AL051987 BRET.csv</option>
+        <option begin='1988-09-03' end='1988-09-03' value='AL051988 ERNESTO.csv'>AL051988 ERNESTO.csv</option>
+        <option begin='1989-08-01' end='1989-08-07' value='AL051989 DEAN.csv'>AL051989 DEAN.csv</option>
+        <option begin='1990-08-04' end='1990-08-08' value='AL051990 DIANA.csv'>AL051990 DIANA.csv</option>
+        <option begin='1991-08-31' end='1991-08-31' value='AL051991 UNNAMED.csv'>AL051991 UNNAMED.csv</option>
+        <option begin='1992-09-17' end='1992-09-26' value='AL051992 BONNIE.csv'>AL051992 BONNIE.csv</option>
+        <option begin='1993-08-22' end='1993-09-06' value='AL051993 EMILY.csv'>AL051993 EMILY.csv</option>
+        <option begin='1994-08-29' end='1994-08-31' value='AL051994 UNNAMED.csv'>AL051994 UNNAMED.csv</option>
+        <option begin='1995-07-31' end='1995-08-06' value='AL051995 ERIN.csv'>AL051995 ERIN.csv</option>
+        <option begin='1996-08-26' end='1996-09-02' value='AL051996 EDOUARD.csv'>AL051996 EDOUARD.csv</option>
+        <option begin='1997-07-16' end='1997-07-25' value='AL051997 DANNY.csv'>AL051997 DANNY.csv</option>
+        <option begin='1998-08-31' end='1998-09-05' value='AL051998 EARL.csv'>AL051998 EARL.csv</option>
+        <option begin='1999-08-24' end='1999-09-07' value='AL051999 DENNIS.csv'>AL051999 DENNIS.csv</option>
+        <option begin='2000-08-13' end='2000-08-15' value='AL052000 BERYL.csv'>AL052000 BERYL.csv</option>
+        <option begin='2001-08-22' end='2001-08-27' value='AL052001 DEAN.csv'>AL052001 DEAN.csv</option>
+        <option begin='2002-09-01' end='2002-09-06' value='AL052002 EDOUARD.csv'>AL052002 EDOUARD.csv</option>
+        <option begin='2003-07-16' end='2003-07-18' value='AL052003 DANNY.csv'>AL052003 DANNY.csv</option>
+        <option begin='2004-08-14' end='2004-08-15' value='AL052004 EARL.csv'>AL052004 EARL.csv</option>
+        <option begin='2005-07-12' end='2005-07-21' value='AL052005 EMILY.csv'>AL052005 EMILY.csv</option>
+        <option begin='2007-08-15' end='2007-08-19' value='AL052007 ERIN.csv'>AL052007 ERIN.csv</option>
+        <option begin='2008-08-03' end='2008-08-06' value='AL052008 EDOUARD.csv'>AL052008 EDOUARD.csv</option>
+        <option begin='2009-08-26' end='2009-08-29' value='AL052009 DANNY.csv'>AL052009 DANNY.csv</option>
+        <option begin='2010-08-10' end='2010-08-18' value='AL052010 FIVE.csv'>AL052010 FIVE.csv</option>
+        <option begin='2011-08-02' end='2011-08-07' value='AL052011 EMILY.csv'>AL052011 EMILY.csv</option>
+        <option begin='2012-08-02' end='2012-08-10' value='AL052012 ERNESTO.csv'>AL052012 ERNESTO.csv</option>
+        <option begin='2014-09-01' end='2014-09-03' value='AL052014 DOLLY.csv'>AL052014 DOLLY.csv</option>
+        <option begin='1982-09-13' end='1982-09-18' value='AL061982 DEBBY.csv'>AL061982 DEBBY.csv</option>
+        <option begin='1983-09-26' end='1983-09-30' value='AL061983 DEAN.csv'>AL061983 DEAN.csv</option>
+        <option begin='1984-08-28' end='1984-09-05' value='AL061984 ARTHUR.csv'>AL061984 ARTHUR.csv</option>
+        <option begin='1985-09-13' end='1985-09-13' value='AL061985 UNNAMED.csv'>AL061985 UNNAMED.csv</option>
+        <option begin='1986-09-02' end='1986-09-04' value='AL061986 UNNAMED.csv'>AL061986 UNNAMED.csv</option>
+        <option begin='1989-08-16' end='1989-08-17' value='AL061989 UNNAMED.csv'>AL061989 UNNAMED.csv</option>
+        <option begin='1991-09-04' end='1991-09-10' value='AL061991 CLAUDETTE.csv'>AL061991 CLAUDETTE.csv</option>
+        <option begin='1994-09-09' end='1994-09-11' value='AL061994 DEBBY.csv'>AL061994 DEBBY.csv</option>
+        <option begin='1995-08-05' end='1995-08-07' value='AL061995 UNNAMED.csv'>AL061995 UNNAMED.csv</option>
+        <option begin='1996-08-28' end='1996-09-07' value='AL061996 FRAN.csv'>AL061996 FRAN.csv</option>
+        <option begin='1997-07-17' end='1997-07-19' value='AL061997 UNNAMED.csv'>AL061997 UNNAMED.csv</option>
+        <option begin='1998-09-08' end='1998-09-13' value='AL061998 FRANCES.csv'>AL061998 FRANCES.csv</option>
+        <option begin='1999-08-24' end='1999-08-28' value='AL061999 EMILY.csv'>AL061999 EMILY.csv</option>
+        <option begin='2000-08-17' end='2000-08-19' value='AL062000 CHRIS.csv'>AL062000 CHRIS.csv</option>
+        <option begin='2001-09-04' end='2001-09-13' value='AL062001 ERIN.csv'>AL062001 ERIN.csv</option>
+        <option begin='2002-09-05' end='2002-09-10' value='AL062002 FAY.csv'>AL062002 FAY.csv</option>
+        <option begin='2003-07-20' end='2003-07-21' value='AL062003 UNNAMED.csv'>AL062003 UNNAMED.csv</option>
+        <option begin='2004-08-28' end='2004-09-09' value='AL062004 FRANCES.csv'>AL062004 FRANCES.csv</option>
+        <option begin='2005-07-21' end='2005-07-29' value='AL062005 FRANKLIN.csv'>AL062005 FRANKLIN.csv</option>
+        <option begin='2006-08-24' end='2006-09-03' value='AL062006 ERNESTO.csv'>AL062006 ERNESTO.csv</option>
+        <option begin='2007-08-31' end='2007-09-06' value='AL062007 FELIX.csv'>AL062007 FELIX.csv</option>
+        <option begin='2008-08-15' end='2008-08-28' value='AL062008 FAY.csv'>AL062008 FAY.csv</option>
+        <option begin='2009-09-01' end='2009-09-04' value='AL062009 ERIKA.csv'>AL062009 ERIKA.csv</option>
+        <option begin='2010-08-25' end='2010-08-30' value='AL062010 DANIELLE.csv'>AL062010 DANIELLE.csv</option>
+        <option begin='2011-08-12' end='2011-08-13' value='AL062011 FRANKLIN.csv'>AL062011 FRANKLIN.csv</option>
+        <option begin='2012-08-08' end='2012-08-08' value='AL062012 FLORENCE.csv'>AL062012 FLORENCE.csv</option>
+        <option begin='2013-08-25' end='2013-08-26' value='AL062013 FERNAND.csv'>AL062013 FERNAND.csv</option>
+        <option begin='2014-09-14' end='2014-09-17' value='AL062014 EDOUARD.csv'>AL062014 EDOUARD.csv</option>
+        <option begin='1982-09-24' end='1982-09-27' value='AL071982 UNNAMED.csv'>AL071982 UNNAMED.csv</option>
+        <option begin='1984-09-01' end='1984-09-03' value='AL071984 BERTHA.csv'>AL071984 BERTHA.csv</option>
+        <option begin='1985-09-11' end='1985-09-13' value='AL071985 UNNAMED.csv'>AL071985 UNNAMED.csv</option>
+        <option begin='1986-09-01' end='1986-09-04' value='AL071986 UNNAMED.csv'>AL071986 UNNAMED.csv</option>
+        <option begin='1988-09-07' end='1988-09-11' value='AL071988 FLORENCE.csv'>AL071988 FLORENCE.csv</option>
+        <option begin='1990-08-14' end='1990-08-14' value='AL071990 FRAN.csv'>AL071990 FRAN.csv</option>
+        <option begin='1991-09-10' end='1991-09-11' value='AL071991 DANNY.csv'>AL071991 DANNY.csv</option>
+        <option begin='1992-09-22' end='1992-09-26' value='AL071992 DANIELLE.csv'>AL071992 DANIELLE.csv</option>
+        <option begin='1993-09-07' end='1993-09-09' value='AL071993 FLOYD.csv'>AL071993 FLOYD.csv</option>
+        <option begin='1995-08-10' end='1995-08-21' value='AL071995 FELIX.csv'>AL071995 FELIX.csv</option>
+        <option begin='1997-09-04' end='1997-09-11' value='AL071997 ERIKA.csv'>AL071997 ERIKA.csv</option>
+        <option begin='1998-09-19' end='1998-10-01' value='AL071998 GEORGES.csv'>AL071998 GEORGES.csv</option>
+        <option begin='1999-09-05' end='1999-09-07' value='AL071999 UNNAMED.csv'>AL071999 UNNAMED.csv</option>
+        <option begin='2000-08-20' end='2000-08-24' value='AL072000 DEBBY.csv'>AL072000 DEBBY.csv</option>
+        <option begin='2002-09-08' end='2002-09-08' value='AL072002 UNNAMED.csv'>AL072002 UNNAMED.csv</option>
+        <option begin='2003-07-25' end='2003-07-27' value='AL072003 UNNAMED.csv'>AL072003 UNNAMED.csv</option>
+        <option begin='2004-08-27' end='2004-08-31' value='AL072004 GASTON.csv'>AL072004 GASTON.csv</option>
+        <option begin='2005-07-23' end='2005-07-25' value='AL072005 GERT.csv'>AL072005 GERT.csv</option>
+        <option begin='2006-09-06' end='2006-09-12' value='AL072006 FLORENCE.csv'>AL072006 FLORENCE.csv</option>
+        <option begin='2007-09-08' end='2007-09-11' value='AL072007 GABRIELLE.csv'>AL072007 GABRIELLE.csv</option>
+        <option begin='2008-08-25' end='2008-09-04' value='AL072008 GUSTAV.csv'>AL072008 GUSTAV.csv</option>
+        <option begin='2009-09-16' end='2009-09-19' value='AL072009 FRED.csv'>AL072009 FRED.csv</option>
+        <option begin='2010-08-28' end='2010-09-04' value='AL072010 EARL.csv'>AL072010 EARL.csv</option>
+        <option begin='2011-08-13' end='2011-08-16' value='AL072011 GERT.csv'>AL072011 GERT.csv</option>
+        <option begin='2012-08-10' end='2012-08-19' value='AL072012 HELENE.csv'>AL072012 HELENE.csv</option>
+        <option begin='2013-09-04' end='2013-09-13' value='AL072013 GABRIELLE.csv'>AL072013 GABRIELLE.csv</option>
+        <option begin='2014-10-10' end='2014-10-13' value='AL072014 FAY.csv'>AL072014 FAY.csv</option>
+        <option begin='1982-09-30' end='1982-10-03' value='AL081982 ERNESTO.csv'>AL081982 ERNESTO.csv</option>
+        <option begin='1984-08-31' end='1984-08-31' value='AL081984 CESAR.csv'>AL081984 CESAR.csv</option>
+        <option begin='1985-09-15' end='1985-09-19' value='AL081985 FABIAN.csv'>AL081985 FABIAN.csv</option>
+        <option begin='1986-09-07' end='1986-09-10' value='AL081986 DANIELLE.csv'>AL081986 DANIELLE.csv</option>
+        <option begin='1987-09-06' end='1987-09-08' value='AL081987 UNNAMED.csv'>AL081987 UNNAMED.csv</option>
+        <option begin='1988-09-08' end='1988-09-19' value='AL081988 GILBERT.csv'>AL081988 GILBERT.csv</option>
+        <option begin='1990-08-25' end='1990-09-02' value='AL081990 GUSTAV.csv'>AL081990 GUSTAV.csv</option>
+        <option begin='1991-09-09' end='1991-09-10' value='AL081991 ERIKA.csv'>AL081991 ERIKA.csv</option>
+        <option begin='1993-09-14' end='1993-09-21' value='AL081993 GERT.csv'>AL081993 GERT.csv</option>
+        <option begin='1994-09-24' end='1994-09-26' value='AL081994 UNNAMED.csv'>AL081994 UNNAMED.csv</option>
+        <option begin='1995-08-09' end='1995-08-12' value='AL081995 GABRIELLE.csv'>AL081995 GABRIELLE.csv</option>
+        <option begin='1996-09-05' end='1996-09-14' value='AL081996 HORTENSE.csv'>AL081996 HORTENSE.csv</option>
+        <option begin='1997-10-04' end='1997-10-08' value='AL081997 FABIAN.csv'>AL081997 FABIAN.csv</option>
+        <option begin='1998-09-17' end='1998-09-20' value='AL081998 HERMINE.csv'>AL081998 HERMINE.csv</option>
+        <option begin='1999-09-08' end='1999-09-16' value='AL081999 FLOYD.csv'>AL081999 FLOYD.csv</option>
+        <option begin='2000-09-02' end='2000-09-03' value='AL082000 ERNESTO.csv'>AL082000 ERNESTO.csv</option>
+        <option begin='2001-09-11' end='2001-09-18' value='AL082001 GABRIELLE.csv'>AL082001 GABRIELLE.csv</option>
+        <option begin='2002-09-08' end='2002-09-11' value='AL082002 GUSTAV.csv'>AL082002 GUSTAV.csv</option>
+        <option begin='2003-08-14' end='2003-08-16' value='AL082003 ERIKA.csv'>AL082003 ERIKA.csv</option>
+        <option begin='2004-08-27' end='2004-08-31' value='AL082004 HERMINE.csv'>AL082004 HERMINE.csv</option>
+        <option begin='2005-08-02' end='2005-08-08' value='AL082005 HARVEY.csv'>AL082005 HARVEY.csv</option>
+        <option begin='2006-09-10' end='2006-09-18' value='AL082006 GORDON.csv'>AL082006 GORDON.csv</option>
+        <option begin='2007-09-14' end='2007-09-18' value='AL082007 INGRID.csv'>AL082007 INGRID.csv</option>
+        <option begin='2008-08-28' end='2008-09-07' value='AL082008 HANNA.csv'>AL082008 HANNA.csv</option>
+        <option begin='2010-08-31' end='2010-09-04' value='AL082010 FIONA.csv'>AL082010 FIONA.csv</option>
+        <option begin='2011-08-19' end='2011-08-22' value='AL082011 HARVEY.csv'>AL082011 HARVEY.csv</option>
+        <option begin='2012-08-15' end='2012-08-17' value='AL082012 GORDON.csv'>AL082012 GORDON.csv</option>
+        <option begin='2013-09-06' end='2013-09-07' value='AL082013 EIGHT.csv'>AL082013 EIGHT.csv</option>
+        <option begin='2014-10-11' end='2014-10-18' value='AL082014 GONZALO.csv'>AL082014 GONZALO.csv</option>
+        <option begin='1984-09-06' end='1984-09-08' value='AL091984 UNNAMED.csv'>AL091984 UNNAMED.csv</option>
+        <option begin='1985-09-21' end='1985-09-27' value='AL091985 GLORIA.csv'>AL091985 GLORIA.csv</option>
+        <option begin='1986-09-10' end='1986-09-18' value='AL091986 EARL.csv'>AL091986 EARL.csv</option>
+        <option begin='1987-09-07' end='1987-09-08' value='AL091987 UNNAMED.csv'>AL091987 UNNAMED.csv</option>
+        <option begin='1988-09-26' end='1988-09-28' value='AL091988 HELENE.csv'>AL091988 HELENE.csv</option>
+        <option begin='1989-08-27' end='1989-08-28' value='AL091989 UNNAMED.csv'>AL091989 UNNAMED.csv</option>
+        <option begin='1990-08-30' end='1990-08-31' value='AL091990 HORTENSE.csv'>AL091990 HORTENSE.csv</option>
+        <option begin='1991-10-15' end='1991-10-17' value='AL091991 FABIAN.csv'>AL091991 FABIAN.csv</option>
+        <option begin='1992-09-26' end='1992-10-03' value='AL091992 EARL.csv'>AL091992 EARL.csv</option>
+        <option begin='1993-09-18' end='1993-09-21' value='AL091993 HARVEY.csv'>AL091993 HARVEY.csv</option>
+        <option begin='1997-10-14' end='1997-10-17' value='AL091997 GRACE.csv'>AL091997 GRACE.csv</option>
+        <option begin='1999-09-15' end='1999-09-22' value='AL091999 GERT.csv'>AL091999 GERT.csv</option>
+        <option begin='2000-09-08' end='2000-09-09' value='AL092000 UNNAMED.csv'>AL092000 UNNAMED.csv</option>
+        <option begin='2001-09-19' end='2001-09-20' value='AL092001 UNNAMED.csv'>AL092001 UNNAMED.csv</option>
+        <option begin='2002-09-12' end='2002-09-15' value='AL092002 HANNA.csv'>AL092002 HANNA.csv</option>
+        <option begin='2003-08-21' end='2003-08-22' value='AL092003 UNNAMED.csv'>AL092003 UNNAMED.csv</option>
+        <option begin='2004-09-06' end='2004-09-24' value='AL092004 IVAN.csv'>AL092004 IVAN.csv</option>
+        <option begin='2005-08-08' end='2005-08-18' value='AL092005 IRENE.csv'>AL092005 IRENE.csv</option>
+        <option begin='2006-09-18' end='2006-09-23' value='AL092006 HELENE.csv'>AL092006 HELENE.csv</option>
+        <option begin='2007-09-12' end='2007-09-14' value='AL092007 HUMBERTO.csv'>AL092007 HUMBERTO.csv</option>
+        <option begin='2008-09-03' end='2008-09-14' value='AL092008 IKE.csv'>AL092008 IKE.csv</option>
+        <option begin='2010-09-05' end='2010-09-08' value='AL092010 GASTON.csv'>AL092010 GASTON.csv</option>
+        <option begin='2011-08-21' end='2011-08-28' value='AL092011 IRENE.csv'>AL092011 IRENE.csv</option>
+        <option begin='2012-08-21' end='2012-09-01' value='AL092012 ISAAC.csv'>AL092012 ISAAC.csv</option>
+        <option begin='2014-10-21' end='2014-10-29' value='AL092014 HANNA.csv'>AL092014 HANNA.csv</option>
+        <option begin='1984-09-08' end='1984-09-15' value='AL101984 DIANA.csv'>AL101984 DIANA.csv</option>
+        <option begin='1985-09-21' end='1985-09-24' value='AL101985 HENRI.csv'>AL101985 HENRI.csv</option>
+        <option begin='1986-11-18' end='1986-11-21' value='AL101986 FRANCES.csv'>AL101986 FRANCES.csv</option>
+        <option begin='1987-09-18' end='1987-09-20' value='AL101987 DENNIS.csv'>AL101987 DENNIS.csv</option>
+        <option begin='1988-09-30' end='1988-10-01' value='AL101988 ISAAC.csv'>AL101988 ISAAC.csv</option>
+        <option begin='1989-09-03' end='1989-09-11' value='AL101989 GABRIELLE.csv'>AL101989 GABRIELLE.csv</option>
+        <option begin='1990-09-12' end='1990-09-14' value='AL101990 ISIDORE.csv'>AL101990 ISIDORE.csv</option>
+        <option begin='1992-10-22' end='1992-10-25' value='AL101992 FRANCES.csv'>AL101992 FRANCES.csv</option>
+        <option begin='1993-09-29' end='1993-09-30' value='AL101993 UNNAMED.csv'>AL101993 UNNAMED.csv</option>
+        <option begin='1994-09-29' end='1994-09-30' value='AL101994 UNNAMED.csv'>AL101994 UNNAMED.csv</option>
+        <option begin='1995-08-22' end='1995-09-03' value='AL101995 IRIS.csv'>AL101995 IRIS.csv</option>
+        <option begin='1996-10-04' end='1996-10-09' value='AL101996 JOSEPHINE.csv'>AL101996 JOSEPHINE.csv</option>
+        <option begin='1999-09-19' end='1999-09-22' value='AL101999 HARVEY.csv'>AL101999 HARVEY.csv</option>
+        <option begin='2000-09-10' end='2000-09-17' value='AL102000 FLORENCE.csv'>AL102000 FLORENCE.csv</option>
+        <option begin='2001-09-21' end='2001-09-26' value='AL102001 HUMBERTO.csv'>AL102001 HUMBERTO.csv</option>
+        <option begin='2002-09-14' end='2002-09-27' value='AL102002 ISIDORE.csv'>AL102002 ISIDORE.csv</option>
+        <option begin='2003-08-31' end='2003-09-07' value='AL102003 FABIAN.csv'>AL102003 FABIAN.csv</option>
+        <option begin='2005-08-16' end='2005-08-18' value='AL102005 TEN.csv'>AL102005 TEN.csv</option>
+        <option begin='2006-09-27' end='2006-10-02' value='AL102006 ISAAC.csv'>AL102006 ISAAC.csv</option>
+        <option begin='2007-09-21' end='2007-09-22' value='AL102007 TEN.csv'>AL102007 TEN.csv</option>
+        <option begin='2008-09-09' end='2008-09-10' value='AL102008 JOSEPHINE.csv'>AL102008 JOSEPHINE.csv</option>
+        <option begin='2009-10-06' end='2009-10-11' value='AL102009 HENRI.csv'>AL102009 HENRI.csv</option>
+        <option begin='2010-09-04' end='2010-09-10' value='AL102010 HERMINE.csv'>AL102010 HERMINE.csv</option>
+        <option begin='2013-09-12' end='2013-09-17' value='AL102013 INGRID.csv'>AL102013 INGRID.csv</option>
+        <option begin='1984-09-14' end='1984-09-15' value='AL111984 EDOUARD.csv'>AL111984 EDOUARD.csv</option>
+        <option begin='1985-10-07' end='1985-10-15' value='AL111985 ISABEL.csv'>AL111985 ISABEL.csv</option>
+        <option begin='1987-09-13' end='1987-09-17' value='AL111987 UNNAMED.csv'>AL111987 UNNAMED.csv</option>
+        <option begin='1988-10-12' end='1988-10-23' value='AL111988 JOAN.csv'>AL111988 JOAN.csv</option>
+        <option begin='1989-09-15' end='1989-09-22' value='AL111989 HUGO.csv'>AL111989 HUGO.csv</option>
+        <option begin='1990-09-22' end='1990-09-27' value='AL111990 UNNAMED.csv'>AL111990 UNNAMED.csv</option>
+        <option begin='1991-10-25' end='1991-10-29' value='AL111991 GRACE.csv'>AL111991 GRACE.csv</option>
+        <option begin='1994-11-03' end='1994-11-07' value='AL111994 FLORENCE.csv'>AL111994 FLORENCE.csv</option>
+        <option begin='1995-08-22' end='1995-08-28' value='AL111995 JERRY.csv'>AL111995 JERRY.csv</option>
+        <option begin='1996-10-11' end='1996-10-12' value='AL111996 KYLE.csv'>AL111996 KYLE.csv</option>
+        <option begin='1998-09-23' end='1998-09-26' value='AL111998 KARL.csv'>AL111998 KARL.csv</option>
+        <option begin='1999-10-04' end='1999-10-06' value='AL111999 UNNAMED.csv'>AL111999 UNNAMED.csv</option>
+        <option begin='2000-09-14' end='2000-09-20' value='AL112000 GORDON.csv'>AL112000 GORDON.csv</option>
+        <option begin='2001-10-04' end='2001-10-09' value='AL112001 IRIS.csv'>AL112001 IRIS.csv</option>
+        <option begin='2002-09-17' end='2002-09-18' value='AL112002 JOSEPHINE.csv'>AL112002 JOSEPHINE.csv</option>
+        <option begin='2003-08-30' end='2003-09-02' value='AL112003 GRACE.csv'>AL112003 GRACE.csv</option>
+        <option begin='2004-09-13' end='2004-09-29' value='AL112004 JEANNE.csv'>AL112004 JEANNE.csv</option>
+        <option begin='2005-08-22' end='2005-08-23' value='AL112005 JOSE.csv'>AL112005 JOSE.csv</option>
+        <option begin='2008-09-25' end='2008-09-28' value='AL112008 KYLE.csv'>AL112008 KYLE.csv</option>
+        <option begin='2009-11-04' end='2009-11-11' value='AL112009 IDA.csv'>AL112009 IDA.csv</option>
+        <option begin='2010-09-13' end='2010-09-21' value='AL112010 IGOR.csv'>AL112010 IGOR.csv</option>
+        <option begin='2011-08-26' end='2011-08-29' value='AL112011 JOSE.csv'>AL112011 JOSE.csv</option>
+        <option begin='2012-08-30' end='2012-09-01' value='AL112012 KIRK.csv'>AL112012 KIRK.csv</option>
+        <option begin='2013-09-28' end='2013-09-29' value='AL112013 JERRY.csv'>AL112013 JERRY.csv</option>
+        <option begin='1985-10-26' end='1985-11-01' value='AL121985 JUAN.csv'>AL121985 JUAN.csv</option>
+        <option begin='1987-09-20' end='1987-09-26' value='AL121987 EMILY.csv'>AL121987 EMILY.csv</option>
+        <option begin='1988-11-17' end='1988-11-25' value='AL121988 KEITH.csv'>AL121988 KEITH.csv</option>
+        <option begin='1989-09-17' end='1989-09-21' value='AL121989 IRIS.csv'>AL121989 IRIS.csv</option>
+        <option begin='1991-10-29' end='1991-11-02' value='AL121991 UNNAMED.csv'>AL121991 UNNAMED.csv</option>
+        <option begin='1994-11-08' end='1994-11-21' value='AL121994 GORDON.csv'>AL121994 GORDON.csv</option>
+        <option begin='1995-08-30' end='1995-09-03' value='AL121995 KAREN.csv'>AL121995 KAREN.csv</option>
+        <option begin='1996-10-14' end='1996-10-24' value='AL121996 LILI.csv'>AL121996 LILI.csv</option>
+        <option begin='2000-09-15' end='2000-09-24' value='AL122000 HELENE.csv'>AL122000 HELENE.csv</option>
+        <option begin='2001-10-06' end='2001-10-08' value='AL122001 JERRY.csv'>AL122001 JERRY.csv</option>
+        <option begin='2002-09-20' end='2002-10-12' value='AL122002 KYLE.csv'>AL122002 KYLE.csv</option>
+        <option begin='2003-09-03' end='2003-09-08' value='AL122003 HENRI.csv'>AL122003 HENRI.csv</option>
+        <option begin='2005-08-23' end='2005-08-31' value='AL122005 KATRINA.csv'>AL122005 KATRINA.csv</option>
+        <option begin='2007-09-29' end='2007-09-29' value='AL122007 KAREN.csv'>AL122007 KAREN.csv</option>
+        <option begin='2010-09-18' end='2010-09-19' value='AL122010 JULIA.csv'>AL122010 JULIA.csv</option>
+        <option begin='2011-09-02' end='2011-09-09' value='AL122011 KATIA.csv'>AL122011 KATIA.csv</option>
+        <option begin='2012-08-31' end='2012-09-10' value='AL122012 LESLIE.csv'>AL122012 LESLIE.csv</option>
+        <option begin='2013-10-03' end='2013-10-06' value='AL122013 KAREN.csv'>AL122013 KAREN.csv</option>
+        <option begin='1984-09-16' end='1984-09-19' value='AL131984 GUSTAV.csv'>AL131984 GUSTAV.csv</option>
+        <option begin='1985-11-15' end='1985-11-23' value='AL131985 KATE.csv'>AL131985 KATE.csv</option>
+        <option begin='1987-10-09' end='1987-10-14' value='AL131987 FLOYD.csv'>AL131987 FLOYD.csv</option>
+        <option begin='1988-05-31' end='1988-06-02' value='AL131988 UNNAMED.csv'>AL131988 UNNAMED.csv</option>
+        <option begin='1989-10-03' end='1989-10-05' value='AL131989 UNNAMED.csv'>AL131989 UNNAMED.csv</option>
+        <option begin='1990-10-03' end='1990-10-09' value='AL131990 KLAUS.csv'>AL131990 KLAUS.csv</option>
+        <option begin='1995-09-03' end='1995-09-10' value='AL131995 LUIS.csv'>AL131995 LUIS.csv</option>
+        <option begin='1996-11-13' end='1996-11-26' value='AL131996 MARCO.csv'>AL131996 MARCO.csv</option>
+        <option begin='1998-10-22' end='1998-11-07' value='AL131998 MITCH.csv'>AL131998 MITCH.csv</option>
+        <option begin='1999-10-12' end='1999-10-18' value='AL131999 IRENE.csv'>AL131999 IRENE.csv</option>
+        <option begin='2000-09-28' end='2000-09-30' value='AL132000 ISAAC.csv'>AL132000 ISAAC.csv</option>
+        <option begin='2001-10-11' end='2001-10-14' value='AL132001 KAREN.csv'>AL132001 KAREN.csv</option>
+        <option begin='2002-09-22' end='2002-10-04' value='AL132002 LILI.csv'>AL132002 LILI.csv</option>
+        <option begin='2003-09-10' end='2003-09-19' value='AL132003 ISABEL.csv'>AL132003 ISABEL.csv</option>
+        <option begin='2005-08-29' end='2005-09-03' value='AL132005 LEE.csv'>AL132005 LEE.csv</option>
+        <option begin='2007-09-25' end='2007-09-28' value='AL132007 LORENZO.csv'>AL132007 LORENZO.csv</option>
+        <option begin='2008-10-06' end='2008-10-07' value='AL132008 MARCO.csv'>AL132008 MARCO.csv</option>
+        <option begin='2010-09-13' end='2010-09-18' value='AL132010 KARL.csv'>AL132010 KARL.csv</option>
+        <option begin='2011-09-02' end='2011-09-06' value='AL132011 LEE.csv'>AL132011 LEE.csv</option>
+        <option begin='2013-10-21' end='2013-10-23' value='AL132013 LORENZO.csv'>AL132013 LORENZO.csv</option>
+        <option begin='1981-09-03' end='1981-09-10' value='AL141981 FLOYD.csv'>AL141981 FLOYD.csv</option>
+        <option begin='1984-09-23' end='1984-10-01' value='AL141984 HORTENSE.csv'>AL141984 HORTENSE.csv</option>
+        <option begin='1985-12-07' end='1985-12-09' value='AL141985 UNNAMED.csv'>AL141985 UNNAMED.csv</option>
+        <option begin='1987-10-31' end='1987-11-04' value='AL141987 UNNAMED.csv'>AL141987 UNNAMED.csv</option>
+        <option begin='1988-08-13' end='1988-08-14' value='AL141988 UNNAMED.csv'>AL141988 UNNAMED.csv</option>
+        <option begin='1989-10-12' end='1989-10-16' value='AL141989 JERRY.csv'>AL141989 JERRY.csv</option>
+        <option begin='1990-10-10' end='1990-10-14' value='AL141990 LILI.csv'>AL141990 LILI.csv</option>
+        <option begin='1995-09-11' end='1995-09-13' value='AL141995 UNNAMED.csv'>AL141995 UNNAMED.csv</option>
+        <option begin='1999-10-18' end='1999-10-25' value='AL141999 JOSE.csv'>AL141999 JOSE.csv</option>
+        <option begin='2000-09-29' end='2000-10-02' value='AL142000 JOYCE.csv'>AL142000 JOYCE.csv</option>
+        <option begin='2002-10-14' end='2002-10-16' value='AL142002 UNNAMED.csv'>AL142002 UNNAMED.csv</option>
+        <option begin='2004-10-08' end='2004-10-11' value='AL142004 MATTHEW.csv'>AL142004 MATTHEW.csv</option>
+        <option begin='2005-09-02' end='2005-09-07' value='AL142005 MARIA.csv'>AL142005 MARIA.csv</option>
+        <option begin='2007-10-04' end='2007-10-05' value='AL142007 MELISSA.csv'>AL142007 MELISSA.csv</option>
+        <option begin='2011-09-08' end='2011-09-16' value='AL142011 MARIA.csv'>AL142011 MARIA.csv</option>
+        <option begin='2012-09-13' end='2012-09-15' value='AL142012 NADINE.csv'>AL142012 NADINE.csv</option>
+        <option begin='2013-11-17' end='2013-11-20' value='AL142013 MELISSA.csv'>AL142013 MELISSA.csv</option>
+        <option begin='1981-09-07' end='1981-09-13' value='AL151981 GERT.csv'>AL151981 GERT.csv</option>
+        <option begin='1984-09-25' end='1984-10-01' value='AL151984 ISIDORE.csv'>AL151984 ISIDORE.csv</option>
+        <option begin='1988-08-27' end='1988-08-31' value='AL151988 UNNAMED.csv'>AL151988 UNNAMED.csv</option>
+        <option begin='1989-11-28' end='1989-12-04' value='AL151989 KAREN.csv'>AL151989 KAREN.csv</option>
+        <option begin='1990-10-09' end='1990-10-13' value='AL151990 MARCO.csv'>AL151990 MARCO.csv</option>
+        <option begin='1995-09-12' end='1995-10-01' value='AL151995 MARILYN.csv'>AL151995 MARILYN.csv</option>
+        <option begin='1999-10-28' end='1999-11-01' value='AL151999 KATRINA.csv'>AL151999 KATRINA.csv</option>
+        <option begin='2000-09-28' end='2000-10-06' value='AL152000 KEITH.csv'>AL152000 KEITH.csv</option>
+        <option begin='2001-10-29' end='2001-11-06' value='AL152001 MICHELLE.csv'>AL152001 MICHELLE.csv</option>
+        <option begin='2003-09-24' end='2003-09-28' value='AL152003 JUAN.csv'>AL152003 JUAN.csv</option>
+        <option begin='2004-10-10' end='2004-10-11' value='AL152004 NICOLE.csv'>AL152004 NICOLE.csv</option>
+        <option begin='2005-09-05' end='2005-09-10' value='AL152005 NATE.csv'>AL152005 NATE.csv</option>
+        <option begin='2007-10-11' end='2007-10-13' value='AL152007 FIFTEEN.csv'>AL152007 FIFTEEN.csv</option>
+        <option begin='2008-10-13' end='2008-10-18' value='AL152008 OMAR.csv'>AL152008 OMAR.csv</option>
+        <option begin='2010-09-23' end='2010-09-26' value='AL152010 MATTHEW.csv'>AL152010 MATTHEW.csv</option>
+        <option begin='2011-09-06' end='2011-09-12' value='AL152011 NATE.csv'>AL152011 NATE.csv</option>
+        <option begin='1981-09-12' end='1981-09-17' value='AL161981 HARVEY.csv'>AL161981 HARVEY.csv</option>
+        <option begin='1984-10-07' end='1984-10-16' value='AL161984 JOSEPHINE.csv'>AL161984 JOSEPHINE.csv</option>
+        <option begin='1988-08-20' end='1988-08-24' value='AL161988 UNNAMED.csv'>AL161988 UNNAMED.csv</option>
+        <option begin='1990-10-16' end='1990-10-21' value='AL161990 NANA.csv'>AL161990 NANA.csv</option>
+        <option begin='1999-11-13' end='1999-11-23' value='AL161999 LENNY.csv'>AL161999 LENNY.csv</option>
+        <option begin='2000-10-04' end='2000-10-08' value='AL162000 LESLIE.csv'>AL162000 LESLIE.csv</option>
+        <option begin='2001-11-04' end='2001-11-05' value='AL162001 NOEL.csv'>AL162001 NOEL.csv</option>
+        <option begin='2003-10-04' end='2003-10-07' value='AL162003 KATE.csv'>AL162003 KATE.csv</option>
+        <option begin='2004-11-30' end='2004-12-05' value='AL162004 OTTO.csv'>AL162004 OTTO.csv</option>
+        <option begin='2005-09-06' end='2005-09-17' value='AL162005 OPHELIA.csv'>AL162005 OPHELIA.csv</option>
+        <option begin='2007-10-24' end='2007-11-03' value='AL162007 NOEL.csv'>AL162007 NOEL.csv</option>
+        <option begin='2008-10-14' end='2008-10-16' value='AL162008 SIXTEEN.csv'>AL162008 SIXTEEN.csv</option>
+        <option begin='2010-09-28' end='2010-09-30' value='AL162010 NICOLE.csv'>AL162010 NICOLE.csv</option>
+        <option begin='2011-09-23' end='2011-10-02' value='AL162011 OPHELIA.csv'>AL162011 OPHELIA.csv</option>
+        <option begin='2012-10-10' end='2012-10-13' value='AL162012 PATTY.csv'>AL162012 PATTY.csv</option>
+        <option begin='1981-09-12' end='1981-09-14' value='AL171981 UNNAMED.csv'>AL171981 UNNAMED.csv</option>
+        <option begin='1984-10-25' end='1984-10-28' value='AL171984 UNNAMED.csv'>AL171984 UNNAMED.csv</option>
+        <option begin='1988-09-04' end='1988-09-04' value='AL171988 UNNAMED.csv'>AL171988 UNNAMED.csv</option>
+        <option begin='1995-09-27' end='1995-10-05' value='AL171995 OPAL.csv'>AL171995 OPAL.csv</option>
+        <option begin='2000-10-15' end='2000-10-19' value='AL172000 MICHAEL.csv'>AL172000 MICHAEL.csv</option>
+        <option begin='2001-11-23' end='2001-12-04' value='AL172001 OLGA.csv'>AL172001 OLGA.csv</option>
+        <option begin='2003-09-27' end='2003-10-07' value='AL172003 LARRY.csv'>AL172003 LARRY.csv</option>
+        <option begin='2005-09-17' end='2005-09-24' value='AL172005 PHILIPPE.csv'>AL172005 PHILIPPE.csv</option>
+        <option begin='2007-12-10' end='2007-12-16' value='AL172007 OLGA.csv'>AL172007 OLGA.csv</option>
+        <option begin='2008-11-05' end='2008-11-14' value='AL172008 PALOMA.csv'>AL172008 PALOMA.csv</option>
+        <option begin='2010-10-06' end='2010-10-10' value='AL172010 OTTO.csv'>AL172010 OTTO.csv</option>
+        <option begin='2011-10-02' end='2011-10-08' value='AL172011 PHILIPPE.csv'>AL172011 PHILIPPE.csv</option>
+        <option begin='2012-10-12' end='2012-10-17' value='AL172012 RAFAEL.csv'>AL172012 RAFAEL.csv</option>
+        <option begin='1981-09-25' end='1981-09-29' value='AL181981 IRENE.csv'>AL181981 IRENE.csv</option>
+        <option begin='1984-11-05' end='1984-11-13' value='AL181984 KLAUS.csv'>AL181984 KLAUS.csv</option>
+        <option begin='1995-10-07' end='1995-10-08' value='AL181995 PABLO.csv'>AL181995 PABLO.csv</option>
+        <option begin='2000-10-19' end='2000-10-22' value='AL182000 NADINE.csv'>AL182000 NADINE.csv</option>
+        <option begin='2003-10-10' end='2003-10-14' value='AL182003 MINDY.csv'>AL182003 MINDY.csv</option>
+        <option begin='2005-09-18' end='2005-09-26' value='AL182005 RITA.csv'>AL182005 RITA.csv</option>
+        <option begin='2010-10-11' end='2010-10-15' value='AL182010 PAULA.csv'>AL182010 PAULA.csv</option>
+        <option begin='2011-10-22' end='2011-10-29' value='AL182011 RINA.csv'>AL182011 RINA.csv</option>
+        <option begin='2012-10-21' end='2012-10-30' value='AL182012 SANDY.csv'>AL182012 SANDY.csv</option>
+        <option begin='1981-09-29' end='1981-10-04' value='AL191981 UNNAMED.csv'>AL191981 UNNAMED.csv</option>
+        <option begin='1984-11-23' end='1984-11-28' value='AL191984 UNNAMED.csv'>AL191984 UNNAMED.csv</option>
+        <option begin='1988-10-19' end='1988-10-21' value='AL191988 UNNAMED.csv'>AL191988 UNNAMED.csv</option>
+        <option begin='1995-10-07' end='1995-10-21' value='AL191995 ROXANNE.csv'>AL191995 ROXANNE.csv</option>
+        <option begin='2000-10-25' end='2000-10-28' value='AL192000 UNNAMED.csv'>AL192000 UNNAMED.csv</option>
+        <option begin='2003-10-21' end='2003-11-01' value='AL192003 NICHOLAS.csv'>AL192003 NICHOLAS.csv</option>
+        <option begin='2010-10-19' end='2010-10-26' value='AL192010 RICHARD.csv'>AL192010 RICHARD.csv</option>
+        <option begin='2011-11-06' end='2011-11-12' value='AL192011 SEAN.csv'>AL192011 SEAN.csv</option>
+        <option begin='2012-10-21' end='2012-10-23' value='AL192012 TONY.csv'>AL192012 TONY.csv</option>
+        <option begin='1984-12-12' end='1984-12-24' value='AL201984 LILI.csv'>AL201984 LILI.csv</option>
+        <option begin='1995-10-20' end='1995-10-25' value='AL201995 SEBASTIEN.csv'>AL201995 SEBASTIEN.csv</option>
+        <option begin='2003-12-04' end='2003-12-09' value='AL202003 ODETTE.csv'>AL202003 ODETTE.csv</option>
+        <option begin='2005-10-01' end='2005-10-05' value='AL202005 STAN.csv'>AL202005 STAN.csv</option>
+        <option begin='2010-10-28' end='2010-10-30' value='AL202010 SHARY.csv'>AL202010 SHARY.csv</option>
+        <option begin='2011-08-31' end='2011-09-03' value='AL202011 UNNAMED.csv'>AL202011 UNNAMED.csv</option>
+        <option begin='1981-11-03' end='1981-11-07' value='AL211981 KATRINA.csv'>AL211981 KATRINA.csv</option>
+        <option begin='1995-10-27' end='1995-10-31' value='AL211995 TANYA.csv'>AL211995 TANYA.csv</option>
+        <option begin='2010-10-29' end='2010-11-10' value='AL212010 TOMAS.csv'>AL212010 TOMAS.csv</option>
+        <option begin='1981-11-12' end='1981-11-16' value='AL221981 UNNAMED.csv'>AL221981 UNNAMED.csv</option>
+        <option begin='2005-10-05' end='2005-10-07' value='AL222005 TAMMY.csv'>AL222005 TAMMY.csv</option>
+        <option begin='2005-10-08' end='2005-10-14' value='AL232005 TWENTY-TWO.csv'>AL232005 TWENTY-TWO.csv</option>
+        <option begin='2005-10-15' end='2005-10-25' value='AL252005 WILMA.csv'>AL252005 WILMA.csv</option>
+        <option begin='2005-10-22' end='2005-10-24' value='AL262005 ALPHA.csv'>AL262005 ALPHA.csv</option>
+        <option begin='2005-10-26' end='2005-10-31' value='AL272005 BETA.csv'>AL272005 BETA.csv</option>
+        <option begin='2005-11-14' end='2005-11-22' value='AL282005 GAMMA.csv'>AL282005 GAMMA.csv</option>
+        <option begin='2005-11-29' end='2005-12-02' value='AL302005 EPSILON.csv'>AL302005 EPSILON.csv</option>
+        <option begin='2006-01-06' end='2006-01-07' value='AL312005 ZETA.csv'>AL312005 ZETA.csv</option>
     </select>
-
-    <button onclick="showhurricane()">Show Hurricane</button>
+    <button onclick="showhurricane(false)">Show Hurricane</button>
     <button onclick="clearhurricanes()">Clear Paths</button>
+    <input type="checkbox" id="hurricaneio">Add and remove hurricanes with time<br>
 
     <div id="map">
         <div id="imagediv"></div>
         <div id="mapdiv"></div>
     </div>
-
     <div id="chart"></div>
 </div>
 
@@ -632,12 +572,21 @@
 <script src="update.js"></script>
 <script src="pushdatatomultiplot.js"></script>
 <script src="showhurricane.js"></script>
+<script src="play.js"></script>
+<div>
+</div>
 
 <script>
+    var currentdate = '01-01-1982';
+    var dispatch = d3.dispatch("update");
+    var daysinmonth = [0,31,28,31,30,31,30,31,31,30,31,30,31]; // zero is because I'm a bad programmer
+    var playvar;
+    var hurricanechange = false;
+
     //BEGIN MAP VARIABLES
     var mapmargin = {top: 20, right: 20, bottom: 20, left: 20};
-    var mapwidth = 600 + 40 - mapmargin.left - mapmargin.right;
-    var mapheight = 360 + 40 - mapmargin.top - mapmargin.bottom;
+    var mapwidth = 450 + 40 - mapmargin.left - mapmargin.right;
+    var mapheight = 270 + 40 - mapmargin.top - mapmargin.bottom;
 
     var mx = d3.scale.linear();
     var my = d3.scale.linear();
@@ -662,9 +611,9 @@
     //END MAP VARIABLES
 
     // BEGIN HISTOGRAM VARIABLES
-    var histmargin = {top: 20, right: 20, bottom: 20, left: 40},
-            histwidth = 600 + 40 - histmargin.left - histmargin.right,
-            histheight = 360 + 50 - histmargin.top - histmargin.bottom;
+    var histmargin = {top: 20, right: 20, bottom: 50, left: 40},
+            histwidth = 450 + 40 - histmargin.left - histmargin.right,
+            histheight = 290 + 50 - histmargin.top - histmargin.bottom;
 
     var hx = d3.scale.linear()
             .domain([0, 35])
@@ -692,7 +641,7 @@
 
     // MULTIPLOT VARIABLES
     var mpmargin = {top: 30, right: 30, bottom: 20, left: 35},
-            mpwidth = 720 - mpmargin.left - mpmargin.right,
+            mpwidth = 600 - mpmargin.left - mpmargin.right,
             mpheight = histheight + mapheight + 100 - mpmargin.top - mpmargin.bottom;
 
     var mpx = d3.scale.linear()
@@ -741,7 +690,6 @@
             .style("text-anchor", "end")
             .text("Instances of temperatures of bin.");
 
-
     var hist = [];
     var multiplotnum = [];
     var numplots = 0;
@@ -754,10 +702,72 @@
         var year = document.getElementById("yearselect").value;
         var month = document.getElementById("monthselect").value;
         var day = document.getElementById("dayselect").value;
-        update(year + "-" + month + "-" + day, minlat, maxlat, minlon, maxlon)
+        update(year + "-" + month + "-" + day, minlat, maxlat, minlon, maxlon);
     }
 
-    // END UPDATE FUNCTION
+    function FormatNumberLength(num, length) {
+        var r = "" + num;
+        while (r.length < length) {
+            r = "0" + r;
+        }
+        return r;
+    }
+
+    function moveoneday(direction, minlat, maxlat, minlon, maxlon) {
+        var year = +document.getElementById("yearselect").value;
+        var month = +document.getElementById("monthselect").value;
+        var day = +document.getElementById("dayselect").value;
+
+        if (day + direction < 1) {
+            if (month - 1 < 1) {
+                if (year - 1 < 1981) {
+                } else {
+                    day = 31;
+                    month = 12;
+                    year = year - 1;
+                }
+            } else {
+                month = month - 1;
+                day = daysinmonth[month-1];
+            }
+        } else if(day + direction > daysinmonth[month]){
+            if (month + 1 > 12) {
+                if (year + 1 > 2014) {
+                } else {
+                    day = 1;
+                    month = 1;
+                    year = year + 1;
+                }
+            } else {
+                day = 1;
+                month++;
+            }
+        } else {
+            day = day + direction;
+        }
+
+        update(FormatNumberLength(year,4) + "-" + FormatNumberLength(month,2) + "-" + FormatNumberLength(day,2),
+                minlat, maxlat, minlon, maxlon);
+    }
+
+    function updateDaySelect(month){
+        var ndays = daysinmonth[month+1]; //no -1 is because the select element returns and index beginning at 0.
+        var dayselect = document.getElementById('dayselect');
+        if (dayselect.options.length == ndays){}
+        else if (dayselect.options.length > ndays) {
+            for (var i = dayselect.options.length; i >= ndays; i--) {
+                dayselect.remove(i);
+            }
+        } else {
+            for (var i = dayselect.options.length+1; i <= ndays; i++) {
+                var option = document.createElement('option');
+                option.text = i.toString();
+                option.value = i;
+                dayselect.add(option, i);
+            }
+        }
+    }
+
     init();
 
 </script>

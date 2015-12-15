@@ -2,18 +2,18 @@
  * Created by BisharaKorkor on 8/6/15.
  */
 
-function showhurricane(fromupdate) {
+function showhurricane(frombutton) {
 
     var filename = document.getElementById("hurricaneselect").value;
 
-    var tip = d3.tip()
-        .attr('class', 'd3-tip')
-        .offset([-10, 0])
-        .html(function(d) {
-            return "<strong>Date:</strong> <span style='color:red'>" + d.date + "</span>" + "<br>" +
-                "<strong>Time:</strong> <span style='color:red'>" + d.time + "</span>" + "<br>" +
-                "<strong>Cat:</strong> <span style='color:red'>" + d.category + "</span>";
-        });
+    //var tip = d3.tip()
+    //    .attr('class', 'd3-tip')
+    //    .offset([-10, 0])
+    //    .html(function(d) {
+    //        return "<strong>Date:</strong> <span style='color:red'>" + d.date + "</span>" + "<br>" +
+    //            "<strong>Time:</strong> <span style='color:red'>" + d.time + "</span>" + "<br>" +
+    //            "<strong>Cat:</strong> <span style='color:red'>" + d.category + "</span>";
+    //    });
 
     d3.selection.prototype.moveToFront = function() {
         return this.each(function(){
@@ -29,7 +29,7 @@ function showhurricane(fromupdate) {
             d.windspeed = +d.windspeed;
         });
 
-        if (fromupdate == false) {
+        if (frombutton == true) {
             update(data[0].date, 0, 120, 0, 200);
         }
 
@@ -47,21 +47,23 @@ function showhurricane(fromupdate) {
         svg.call(tip);
 
         var paths = svg.append('g')
-            .attr("class", "hurricanepaths");
+            .attr("class", "hurricanepath")
+            .attr("begin", data[0].date)
+            .attr("end", data[data.length-1].date);
 
         paths.attr("transform", "translate(" + mapmargin.left + "," + mapmargin.top + ")")
             .append("path")
             .datum(data)
             .attr("class", "line")
-            .attr("begin", data[0].date)
-            .attr("end", data[data.length-1].date)
             .attr("d", line)
             .style("stroke", "purple");
 
         var spots = d3.select('body').select("#map")
             .select('svg')
             .append('g')
-            .attr("class", "hurricanespot");
+            .attr("class", "hurricanespot")
+            .attr("begin", data[0].date)
+            .attr("end", data[data.length-1].date);
 
         spots.attr("transform", "translate(" + mapmargin.left + "," + mapmargin.top + ")")
             .selectAll("circle")
@@ -69,8 +71,6 @@ function showhurricane(fromupdate) {
             .enter()
             .append("circle")
             .attr("class", "circle")
-            .attr("begin", data[0].date)
-            .attr("end", data[data.length-1].date)
             .attr("cx", function(d) { return (100 - d.longitude) * mapwidth / 50; })
             .attr("cy", function(d) { return (40 - d.latitude) * mapheight / 30; })
             .attr("r", function(d) {return d.windspeed / 10;})
@@ -89,13 +89,21 @@ function showhurricane(fromupdate) {
 
         dispatch.on("update.hurricanes", function() {
 
-            spots.data(data).selectAll("circle").filter(function(d, i){
-                return !(hurricaneactive(d3.select(this).attr("begin"), d3.select(this).attr("end")));
-            }).remove();
+            d3.select("body")
+                .select("#map")
+                .select("svg")
+                .selectAll(".hurricanespot")
+                .filter(function(){
+                    return !(hurricaneactive(d3.select(this).attr("begin"), d3.select(this).attr("end")));})
+                .remove();
 
-            paths.data(data).selectAll("path").filter(function(d, i){
-                return !(hurricaneactive(d3.select(this).attr("begin"), d3.select(this).attr("end")));
-            }).remove();
+            d3.select("body")
+                .select("#map")
+                .select("svg")
+                .selectAll(".hurricanepath")
+                .filter(function(){
+                    return !(hurricaneactive(d3.select(this).attr("begin"), d3.select(this).attr("end")));})
+                .remove();
 
             spots.data(data).selectAll("circle").style('stroke', function(d) {return (determinecolor(d.date))});
         });
@@ -123,18 +131,11 @@ function hurricaneactive(begin, end){
     em = +end.split('-')[1];
     ed = +end.split('-')[2];
 
-    //if (by <= y-1 || y+1 >= ey){
-    //    return false;
-    //}
-
-    numdays = y*365+daysfrommonths(m)+d;
-    bnumdays = by*365+daysfrommonths(bm)+bd;
-    enumdays = ey*365+daysfrommonths(em)+ed;
+    numdays = y * 365 + daysfrommonths(m) + d;
+    bnumdays = by * 365 + daysfrommonths(bm) + bd;
+    enumdays = ey * 365 + daysfrommonths(em) + ed;
 
     if (bnumdays <= numdays && numdays <= enumdays) {
-        console.log("numbdays = ", numdays);
-        console.log(bnumdays);
-        console.log(enumdays);
         return true;
     } else {
         return false;
@@ -143,8 +144,8 @@ function hurricaneactive(begin, end){
 
 function daysfrommonths(month){
     sum = 0;
-    for (m = 1; m==month; m++){
-        sum += daysinmonth[month];
+    for (m = 1; m<=month; m++){
+        sum += daysinmonth[m];
     }
     return sum;
 }
@@ -152,7 +153,7 @@ function daysfrommonths(month){
 function clearhurricanes() {
     d3.select("body").select("#map")
         .select("svg")
-        .selectAll(".hurricanepaths")
+        .selectAll(".hurricanepath")
         .remove();
 
     d3.select("body").select("#map")

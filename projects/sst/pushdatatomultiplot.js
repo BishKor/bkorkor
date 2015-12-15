@@ -49,10 +49,18 @@ function pushdatatomultiplot(data, region) {
         .attr("x", 3)
         .attr("dy", ".35em")
         .attr("fill", colors[numplots])
-        .text(year + "-" + month + "-" + day + " lat: (" + region.minlat + ", " + region.maxlat
-                + ") lon: (" + region.minlon + ", " + region.maxlon + ")");
+        .text(year + "-" + month + "-" + day + " lat: (" + datatolat(region.maxlat) + ", " + datatolat(region.minlat)
+        + ") lon: (" + datatolon(region.minlon) + ", " + datatolon(region.maxlon) + ")");
 
     numplots++;
+}
+
+function datatolon(longitude){
+    return (-100 + +longitude/4).toString();
+}
+
+function datatolat(latitude){
+    return (40 - +latitude/4).toString();
 }
 
 function clearmultiplot() {

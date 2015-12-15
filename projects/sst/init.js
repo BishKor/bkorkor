@@ -104,67 +104,6 @@ function init() {
             axis.selectAll("g").filter(function (d) {return !d;}).remove();
         }
 
-        //// DATAMAP INITIALIZATION
-        //new Datamap({
-        //    element: document.getElementById("mapdiv"),
-        //    width: mapwidth + "px",
-        //    height: mapheight + "px",
-        //    scope: 'world',
-        //    // Zoom in on East Atlantic and Caribbean
-        //
-        //    setProjection: function(element) {
-        //        var projection = d3.geo.equirectangular()
-        //            .center([-75, 25])
-        //            .rotate([0, 0])
-        //            .scale(1)
-        //            .translate([0, 0]);
-        //
-        //        var path = d3.geo.path()
-        //            .projection(projection);
-        //
-        //        var s = mapwidth * 1.15;
-        //        var t = [mapwidth / 2, mapheight / 2];
-        //
-        //        projection
-        //            .scale(s)
-        //            .translate(t);
-        //
-        //        return {path: path, projection: projection};
-        //    },
-        //    fills: {
-        //        defaultFill: "#000"
-        //    }
-        //});
-
-        //mapsvg.selectAll("circle")
-        //    .data([
-        //        [mapwidth / 2, mapheight / 6, 0, 40, 80, 120],
-        //        [7 * mapwidth / 10, mapheight / 6, 0, 40, 120, 160],
-        //        [9 * mapwidth / 10, mapheight / 6, 0, 40, 160, 200],
-        //        [mapwidth / 10, mapheight / 2, 40, 80, 0, 40],
-        //        [3 * mapwidth / 10, mapheight / 2, 40, 80, 40, 80],
-        //        [mapwidth / 2, mapheight / 2, 40, 80, 80, 120],
-        //        [7 * mapwidth / 10, mapheight / 2, 40, 80, 120, 160],
-        //        [9 * mapwidth / 10, mapheight / 2, 40, 80, 160, 200],
-        //        [mapwidth / 2, 5 * mapheight / 6, 80, 120, 80, 120],
-        //        [7 * mapwidth / 10, 5 * mapheight / 6, 80, 120, 120, 160],
-        //        [9 * mapwidth / 10, 5 * mapheight / 6, 80, 120, 160, 200]
-        //    ])
-        //    .enter()
-        //    .append("circle")
-        //    .attr("class", "circle")
-        //    .attr("cx", function(d) { return d[0]; })
-        //    .attr("cy", function(d) { return d[1]; })
-        //    .attr("r", 10)
-        //    .attr("fill", "blue")
-        //    .on("click", function(d) {
-        //        currentregion.minlat=d[2];
-        //        currentregion.maxlat=d[3];
-        //        currentregion.minlon=d[4];
-        //        currentregion.maxlon=d[5];
-        //        updatefrombutton(d[2], d[3], d[4], d[5]);
-        //    });
-
         mapsvg.append('g')
             .attr('class', 'regions')
             .selectAll('maprect')
@@ -188,9 +127,6 @@ function init() {
             .attr('y', function(d) { return d[1]; })
             .attr('width', mapwidth/5 + "px")
             .attr('height', mapheight/3 + "px")
-            //.attr('fill', 'none')
-            //.attr('stroke-width', '3px')
-            //.attr('stroke', 'none')
             .on("click", function(d) {
                 currentregion.minlat=d[2];
                 currentregion.maxlat=d[3];

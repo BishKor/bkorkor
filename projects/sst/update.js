@@ -76,9 +76,9 @@ function update(date, minlat, maxlat, minlon, maxlon) {
     if(document.getElementById("hurricaneio").checked){
         ops = document.getElementById('hurricaneselect').options;
         for (op = 0; op < ops.length; op++) {
-            if (ops[op].getAttribute('begin') == currentdate) {
+            if (hurricaneactive(ops[op].getAttribute('begin'), ops[op].getAttribute('end'))) {
                 ops[op].selected = true;
-                showhurricane(true);
+                showhurricane(false);
             }
         }
     }

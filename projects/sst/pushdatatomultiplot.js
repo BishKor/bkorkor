@@ -19,8 +19,8 @@ function pushdatatomultiplot(data, region) {
     var colors = ["#FF0000", "#0000FF", "#00FF00", "#CCCC00","#FF00FF", "#6600CC"]
 
     var line = d3.svg.line()
-        .x(function(d) { return mpx(d.x); })
-        .y(function(d) { return mpy(d.y); });
+        .x(function(d) {return mpx(d.x);})
+        .y(function(d) {return mpy(d.y);});
 
     mpsvg.selectAll(".line")
         .transition()
@@ -40,16 +40,12 @@ function pushdatatomultiplot(data, region) {
 
     var spacingbetweenlabels = 20 + numplots * 15;
 
-    var year = document.getElementById("yearselect").value;
-    var month = document.getElementById("monthselect").value;
-    var day = document.getElementById("dayselect").value;
-
     distribution.append("text")
         .attr("transform", "translate(" + 20 + "," + spacingbetweenlabels + ")")
         .attr("x", 3)
         .attr("dy", ".35em")
         .attr("fill", colors[numplots])
-        .text(year + "-" + month + "-" + day + " lat: (" + datatolat(region.maxlat) + ", " + datatolat(region.minlat)
+        .text(currentdate + " lat: (" + datatolat(region.maxlat) + ", " + datatolat(region.minlat)
         + ") lon: (" + datatolon(region.minlon) + ", " + datatolon(region.maxlon) + ")");
 
     numplots++;

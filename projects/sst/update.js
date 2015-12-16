@@ -8,7 +8,6 @@ function update(date, minlat, maxlat, minlon, maxlon) {
     document.getElementById('yearselect').value=date.split('-')[0];
     document.getElementById('monthselect').value=date.split('-')[1];
     document.getElementById('dayselect').value=date.split('-')[2];
-
     currentdate = date;
 
     d3.text("sstdata/" + date + ".csv", function(text) {

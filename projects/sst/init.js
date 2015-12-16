@@ -23,9 +23,6 @@ function init() {
             }
         }
 
-        //console.log(data);
-        //console.log(dataset);
-
         hist = d3.layout.histogram()
             .bins(hx.ticks(50))
         (dataset);
@@ -108,15 +105,17 @@ function init() {
             .attr('class', 'regions')
             .selectAll('maprect')
             .data([
-                [2 * mapwidth / 5, 0, 0, 40, 80, 120],
-                [3 * mapwidth / 5, 0, 0, 40, 120, 160],
-                [4 * mapwidth / 5, 0, 0, 40, 160, 200],
-                [0, mapheight / 3, 40, 80, 0, 40],
-                [mapwidth / 5, mapheight / 3, 40, 80, 40, 80],
-                [2 * mapwidth / 5, mapheight / 3, 40, 80, 80, 120],
-                [3 * mapwidth / 5, mapheight / 3, 40, 80, 120, 160],
-                [4 * mapwidth / 5, mapheight / 3, 40, 80, 160, 200],
-                [2 * mapwidth / 5, 2 * mapheight / 3, 80, 120, 80, 120],
+                [2 * mapwidth / 5,                 0,  0,  40,  80, 120],
+                [3 * mapwidth / 5,                 0,  0,  40, 120, 160],
+                [4 * mapwidth / 5,                 0,  0,  40, 160, 200],
+                [               0,     mapheight / 3, 40,  80,   0,  40],
+                [    mapwidth / 5,     mapheight / 3, 40,  80,  40,  80],
+                [2 * mapwidth / 5,     mapheight / 3, 40,  80,  80, 120],
+                [3 * mapwidth / 5,     mapheight / 3, 40,  80, 120, 160],
+                [4 * mapwidth / 5,     mapheight / 3, 40,  80, 160, 200],
+                [               0, 2 * mapheight / 3, 80, 120,   0,  40],
+                [1 * mapwidth / 5, 2 * mapheight / 3, 80, 120,  40,  80],
+                [2 * mapwidth / 5, 2 * mapheight / 3, 80, 120,  80, 120],
                 [3 * mapwidth / 5, 2 * mapheight / 3, 80, 120, 120, 160],
                 [4 * mapwidth / 5, 2 * mapheight / 3, 80, 120, 160, 200]
             ])
